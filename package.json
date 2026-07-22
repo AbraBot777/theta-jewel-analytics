@@ -5,21 +5,11 @@
   "type": "module",
   "scripts": {
     "build:data": "node scripts/build-dashboard-data.mjs",
-    "prebuild": "npm run build:data",
-    "build": "next build",
-    "dev": "npm run build:data && next dev",
-    "start": "next start",
+    "build": "npm run build:data && node scripts/build-static-site.mjs",
+    "dev": "npm run build && npx serve dist",
+    "start": "npx serve dist",
     "refresh": "node scripts/refresh-theta-app.mjs"
   },
-  "dependencies": {
-    "next": "^16.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  },
-  "devDependencies": {
-    "@types/node": "^22.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "typescript": "^5.6.0"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }
