@@ -86,6 +86,18 @@ function renderTradingViewWidget(chart, stock, interval) {
   </div>`;
 
   const container = chart.querySelector(".tradingview-widget-container");
+  const markIframeReady = () => {
+    const iframe = container.querySelector("iframe");
+    if (!iframe) return false;
+    iframe.title = `${stock.symbol} live TradingView chart`;
+    container.classList.add("tv-has-iframe");
+    return true;
+  };
+  const observer = new MutationObserver(() => {
+    if (markIframeReady()) observer.disconnect();
+  });
+  observer.observe(container, { childList: true, subtree: true });
+
   const loader = document.createElement("script");
   loader.type = "text/javascript";
   loader.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
@@ -99,10 +111,12 @@ function renderTradingViewWidget(chart, stock, interval) {
   container.appendChild(loader);
 
   window.setTimeout(() => {
-    if (!container.querySelector("iframe")) {
+    if (!markIframeReady()) {
       container.classList.add("tv-load-failed");
       const loading = container.querySelector(".tv-loading");
       if (loading) loading.textContent = "TradingView did not load on this device.";
+    } else {
+      observer.disconnect();
     }
   }, 7000);
 }

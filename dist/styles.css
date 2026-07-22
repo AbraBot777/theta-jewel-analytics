@@ -316,6 +316,10 @@ input::placeholder {
   color: var(--amber);
 }
 
+.tv-has-iframe .tv-loading {
+  display: none;
+}
+
 .tv-open {
   justify-self: start;
   color: var(--accent);
