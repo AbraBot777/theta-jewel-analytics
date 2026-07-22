@@ -320,6 +320,10 @@ input::placeholder {
   display: none;
 }
 
+.tradingview-widget-container:has(iframe) .tv-loading {
+  display: none;
+}
+
 .tv-open {
   justify-self: start;
   color: var(--accent);
