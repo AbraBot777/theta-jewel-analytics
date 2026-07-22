@@ -48,22 +48,63 @@ function bars(rows, getLabel, getValue) {
   }).join("")}</div>`;
 }
 
-function tradingViewUrl(symbol, interval) {
-  const params = new URLSearchParams({
+function tradingViewChartUrl(symbol) {
+  return `https://www.tradingview.com/chart/?symbol=${encodeURIComponent(symbol)}`;
+}
+
+function tradingViewConfig(symbol, interval) {
+  return {
+    autosize: true,
     symbol,
     interval,
     theme: "dark",
     style: "1",
     timezone: "Africa/Johannesburg",
-    withdateranges: "1",
-    hide_side_toolbar: "0",
-    allow_symbol_change: "0",
-    save_image: "0",
-    calendar: "0",
-    studies: "[]",
+    locale: "en",
+    backgroundColor: "rgba(7, 13, 21, 1)",
+    gridColor: "rgba(41, 184, 255, 0.12)",
+    withdateranges: true,
+    hide_side_toolbar: false,
+    allow_symbol_change: false,
+    save_image: false,
+    calendar: false,
+    details: true,
+    hotlist: false,
+    studies: [],
     support_host: "https://www.tradingview.com"
-  });
-  return `https://s.tradingview.com/widgetembed/?${params.toString()}`;
+  };
+}
+
+function renderTradingViewWidget(chart, stock, interval) {
+  const chartUrl = tradingViewChartUrl(stock.tvSymbol);
+  chart.innerHTML = `<div class="tv-widget-shell">
+    <div class="tradingview-widget-container" id="tv-container">
+      <div class="tv-loading">Loading TradingView chart...</div>
+      <div class="tradingview-widget-container__widget"></div>
+    </div>
+    <a class="tv-open" href="${esc(chartUrl)}" target="_blank" rel="noopener">Open ${esc(stock.symbol)} on TradingView</a>
+  </div>`;
+
+  const container = chart.querySelector(".tradingview-widget-container");
+  const loader = document.createElement("script");
+  loader.type = "text/javascript";
+  loader.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+  loader.async = true;
+  loader.text = JSON.stringify(tradingViewConfig(stock.tvSymbol, interval));
+  loader.onerror = () => {
+    container.classList.add("tv-load-failed");
+    const loading = container.querySelector(".tv-loading");
+    if (loading) loading.textContent = "TradingView did not load on this device.";
+  };
+  container.appendChild(loader);
+
+  window.setTimeout(() => {
+    if (!container.querySelector("iframe")) {
+      container.classList.add("tv-load-failed");
+      const loading = container.querySelector(".tv-loading");
+      if (loading) loading.textContent = "TradingView did not load on this device.";
+    }
+  }, 7000);
 }
 
 function renderStockLiveShell(data) {
@@ -100,7 +141,7 @@ function initStockLive(data) {
   function render() {
     const stock = data.stockLive.instruments.find((item) => item.symbol === symbolSelect.value) || data.stockLive.instruments[0];
     const edgeClass = Number(stock.thetaEdge) >= 0 ? "positive" : "negative";
-    chart.innerHTML = `<iframe class="tv-frame" title="${esc(stock.symbol)} live TradingView chart" src="${esc(tradingViewUrl(stock.tvSymbol, intervalSelect.value))}" loading="eager" referrerpolicy="origin"></iframe>`;
+    renderTradingViewWidget(chart, stock, intervalSelect.value);
     ticket.innerHTML = `<p class="micro">Theta live edge</p><strong class="live-price ${edgeClass}">${fmtNumber(stock.thetaEdge, 2)}R</strong>
       <dl>
         <div><dt>Symbol</dt><dd>${esc(stock.symbol)}</dd></div>
