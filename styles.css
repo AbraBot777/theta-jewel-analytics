@@ -1,15 +1,20 @@
 :root {
-  --bg: #f5f7fb;
-  --panel: #ffffff;
-  --ink: #17202c;
-  --muted: #647084;
-  --line: #dce3ee;
-  --accent: #3168d9;
-  --accent-2: #8057c8;
-  --green: #16855a;
-  --red: #c43d4b;
-  --amber: #b97918;
-  --shadow: 0 14px 35px rgba(23, 32, 44, 0.08);
+  --bg: #070a0f;
+  --panel: #101720;
+  --panel-2: #151d29;
+  --panel-3: #0b1119;
+  --ink: #eef6ff;
+  --muted: #93a3b8;
+  --line: #263342;
+  --accent: #29b8ff;
+  --accent-2: #8b5cf6;
+  --green: #29f29a;
+  --red: #ff4f6d;
+  --amber: #ffd166;
+  --shadow: 0 18px 42px rgba(0, 0, 0, 0.35);
+  --glow-blue: 0 0 22px rgba(41, 184, 255, 0.28);
+  --glow-green: 0 0 24px rgba(41, 242, 154, 0.24);
+  --glow-red: 0 0 22px rgba(255, 79, 109, 0.22);
 }
 
 * {
@@ -22,7 +27,9 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at top left, rgba(41, 184, 255, 0.12), transparent 28rem),
+    linear-gradient(180deg, #070a0f 0%, #0a0f16 42%, #05070b 100%);
   color: var(--ink);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   letter-spacing: 0;
@@ -43,12 +50,13 @@ main {
   padding: 34px;
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(49, 104, 217, 0.92), rgba(22, 133, 90, 0.78)),
+    linear-gradient(135deg, rgba(4, 10, 18, 0.94), rgba(10, 35, 41, 0.84)),
     url("https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1800&q=80");
   background-size: cover;
   background-position: center;
   color: #fff;
   box-shadow: var(--shadow);
+  border: 1px solid rgba(41, 184, 255, 0.26);
 }
 
 .hero h1,
@@ -67,7 +75,7 @@ main {
 .hero-copy {
   max-width: 720px;
   margin-top: 16px !important;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(238, 246, 255, 0.84);
   font-size: 1.04rem;
   line-height: 1.5;
 }
@@ -77,7 +85,7 @@ main {
   gap: 8px;
   min-width: 260px;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(238, 246, 255, 0.82);
   text-align: right;
 }
 
@@ -92,7 +100,7 @@ main {
 }
 
 .hero .eyebrow {
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--green);
 }
 
 .kpi-grid {
@@ -104,7 +112,7 @@ main {
 
 .kpi,
 .panel {
-  background: var(--panel);
+  background: linear-gradient(180deg, rgba(21, 29, 41, 0.96), rgba(13, 19, 28, 0.98));
   border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: var(--shadow);
@@ -126,6 +134,8 @@ main {
   margin: 8px 0;
   font-size: clamp(1.55rem, 4vw, 2.4rem);
   line-height: 1;
+  color: var(--ink);
+  text-shadow: var(--glow-blue);
 }
 
 .dashboard-grid {
@@ -170,17 +180,25 @@ select {
   min-height: 40px;
   border: 1px solid var(--line);
   border-radius: 6px;
-  background: #fff;
+  background: #0b1119;
   color: var(--ink);
   padding: 0 12px;
   font: inherit;
+}
+
+input::placeholder {
+  color: #6f8197;
 }
 
 .sparkline {
   width: 100%;
   height: 220px;
   display: block;
-  background: linear-gradient(#fff, #f7f9fc);
+  background:
+    linear-gradient(rgba(41, 184, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(41, 184, 255, 0.06) 1px, transparent 1px),
+    #0b1119;
+  background-size: 28px 28px;
   border: 1px solid var(--line);
   border-radius: 6px;
 }
@@ -189,10 +207,11 @@ select {
   fill: none;
   stroke-width: 3.5;
   vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 5px currentColor);
 }
 
 .zero-line {
-  stroke: #a7b2c2;
+  stroke: #53657a;
   stroke-dasharray: 3 3;
   vector-effect: non-scaling-stroke;
 }
@@ -205,10 +224,12 @@ select {
   border: 1px dashed var(--line);
   border-radius: 6px;
   color: var(--muted);
+  background: #0b1119;
 }
 
 .feed-error {
   color: var(--red);
+  text-shadow: var(--glow-red);
 }
 
 .okx-panel {
@@ -226,7 +247,11 @@ select {
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 14px;
-  background: #0f1722;
+  background:
+    linear-gradient(rgba(41, 184, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(41, 184, 255, 0.07) 1px, transparent 1px),
+    #070d15;
+  background-size: 30px 30px;
   color: #fff;
 }
 
@@ -239,11 +264,13 @@ select {
 }
 
 .change.positive {
-  color: #72d7aa;
+  color: var(--green);
+  text-shadow: var(--glow-green);
 }
 
 .change.negative {
-  color: #ff8b96;
+  color: var(--red);
+  text-shadow: var(--glow-red);
 }
 
 .price-chart {
@@ -254,9 +281,10 @@ select {
 
 .price-path {
   fill: none;
-  stroke: #7cb8ff;
+  stroke: var(--accent);
   stroke-width: 2.5;
   vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 5px rgba(41, 184, 255, 0.75));
 }
 
 .entry-line,
@@ -268,19 +296,19 @@ select {
 }
 
 .entry-line {
-  stroke: #ffd166;
+  stroke: var(--amber);
 }
 
 .stop-line {
-  stroke: #ff6b7a;
+  stroke: var(--red);
 }
 
 .target-line {
-  stroke: #72d7aa;
+  stroke: var(--green);
 }
 
 .overlay-label {
-  fill: rgba(255, 255, 255, 0.88);
+  fill: rgba(238, 246, 255, 0.9);
   font-size: 4px;
   font-weight: 700;
 }
@@ -289,7 +317,7 @@ select {
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 16px;
-  background: #f9fbfe;
+  background: var(--panel-3);
 }
 
 .live-price {
@@ -297,6 +325,8 @@ select {
   font-size: clamp(2rem, 8vw, 3rem);
   line-height: 1;
   margin-bottom: 16px;
+  color: var(--green);
+  text-shadow: var(--glow-green);
 }
 
 dl {
@@ -347,20 +377,23 @@ dd {
   height: 10px;
   border-radius: 999px;
   overflow: hidden;
-  background: #edf1f7;
+  background: #1a2430;
 }
 
 .bar-fill {
   height: 100%;
   background: var(--accent);
+  box-shadow: var(--glow-blue);
 }
 
 .bar-fill.is-win {
   background: var(--green);
+  box-shadow: var(--glow-green);
 }
 
 .bar-fill.is-loss {
   background: var(--red);
+  box-shadow: var(--glow-red);
 }
 
 .table-wrap {
@@ -373,7 +406,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   min-width: 1080px;
-  background: #fff;
+  background: var(--panel-3);
 }
 
 th,
@@ -388,7 +421,7 @@ td {
 th {
   position: sticky;
   top: 0;
-  background: #f7f9fc;
+  background: #121a25;
   color: var(--muted);
   font-size: 0.76rem;
   text-transform: uppercase;
@@ -408,20 +441,22 @@ th {
   justify-content: center;
   border-radius: 999px;
   padding: 5px 8px;
-  background: #e8eef8;
+  background: #1b2735;
   color: var(--muted);
   font-weight: 800;
   font-size: 0.76rem;
 }
 
 .pill.win {
-  background: rgba(22, 133, 90, 0.12);
+  background: rgba(41, 242, 154, 0.12);
   color: var(--green);
+  box-shadow: inset 0 0 0 1px rgba(41, 242, 154, 0.2);
 }
 
 .pill.loss {
-  background: rgba(196, 61, 75, 0.12);
+  background: rgba(255, 79, 109, 0.12);
   color: var(--red);
+  box-shadow: inset 0 0 0 1px rgba(255, 79, 109, 0.2);
 }
 
 .note-list {
