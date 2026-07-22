@@ -48,98 +48,72 @@ function bars(rows, getLabel, getValue) {
   }).join("")}</div>`;
 }
 
-function priceChart(candles, trade) {
-  const values = candles.flatMap((c) => [c.high, c.low]).filter(Number.isFinite);
-  [trade.entry, trade.stop, trade.target].forEach((v) => Number.isFinite(Number(v)) && values.push(Number(v)));
-  if (candles.length < 2 || !values.length) return `<div class="empty-chart">Waiting for OKX candles</div>`;
-  const min = Math.min(...values);
-  const max = Math.max(...values);
-  const span = max - min || 1;
-  const xFor = (index) => 4 + (index / Math.max(candles.length - 1, 1)) * 92;
-  const yFor = (value) => 88 - ((value - min) / span) * 76;
-  const path = candles.map((candle, index) => `${index === 0 ? "M" : "L"} ${xFor(index).toFixed(2)} ${yFor(candle.close).toFixed(2)}`).join(" ");
-  const overlays = [
-    ["Entry", trade.entry, "entry-line"],
-    ["Stop", trade.stop, "stop-line"],
-    ["Target", trade.target, "target-line"]
-  ].filter((line) => Number.isFinite(Number(line[1]))).map(([label, value, className]) => {
-    const y = yFor(Number(value));
-    return `<line x1="4" x2="96" y1="${y}" y2="${y}" class="${className}"></line><text x="5" y="${Math.max(8, y - 2)}" class="overlay-label">${label}</text>`;
-  }).join("");
-  return `<svg class="price-chart" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="${path}" class="price-path"></path>${overlays}</svg>`;
+function tradingViewUrl(symbol, interval) {
+  const params = new URLSearchParams({
+    symbol,
+    interval,
+    theme: "dark",
+    style: "1",
+    timezone: "Africa/Johannesburg",
+    withdateranges: "1",
+    hide_side_toolbar: "0",
+    allow_symbol_change: "0",
+    save_image: "0",
+    calendar: "0",
+    studies: "[]",
+    support_host: "https://www.tradingview.com"
+  });
+  return `https://s.tradingview.com/widgetembed/?${params.toString()}`;
 }
 
-async function loadOkx(instId, bar = "5m") {
-  const [candlesRes, tickerRes] = await Promise.all([
-    fetch(`https://www.okx.com/api/v5/market/candles?instId=${encodeURIComponent(instId)}&bar=${encodeURIComponent(bar)}&limit=140`),
-    fetch(`https://www.okx.com/api/v5/market/ticker?instId=${encodeURIComponent(instId)}`)
-  ]);
-  const [candlesJson, tickerJson] = await Promise.all([candlesRes.json(), tickerRes.json()]);
-  if (candlesJson.code !== "0" || tickerJson.code !== "0") throw new Error("OKX public feed returned an error");
-  return {
-    ticker: tickerJson.data[0],
-    candles: candlesJson.data.map((row) => ({
-      ts: Number(row[0]),
-      open: Number(row[1]),
-      high: Number(row[2]),
-      low: Number(row[3]),
-      close: Number(row[4]),
-      volume: Number(row[5]),
-      confirmed: row[8] === "1"
-    })).reverse()
-  };
-}
-
-function renderOkxShell(data) {
-  const instruments = data.okxLive.instruments;
-  return `<section class="panel okx-panel" id="okx-live">
+function renderStockLiveShell(data) {
+  const instruments = data.stockLive.instruments;
+  return `<section class="panel okx-panel" id="stock-live">
     <div class="section-head">
-      <div><p class="eyebrow">OKX live feed</p><h2>Live Price Action</h2></div>
+      <div><p class="eyebrow">TradingView live feed</p><h2>Live Stock Price Action</h2></div>
       <div class="toolbar">
-        <select id="okx-inst" aria-label="OKX instrument">${instruments.map((item) => `<option value="${esc(item.instId)}">${esc(item.instId)}</option>`).join("")}</select>
-        <select id="okx-bar" aria-label="Candle interval">${["1m", "3m", "5m", "15m", "30m", "1H", "4H", "1D"].map((bar) => `<option value="${bar}" ${bar === data.okxLive.defaultBar ? "selected" : ""}>${bar}</option>`).join("")}</select>
+        <select id="stock-symbol" aria-label="Stock symbol">${instruments.map((item) => `<option value="${esc(item.symbol)}">${esc(item.symbol)}</option>`).join("")}</select>
+        <select id="stock-interval" aria-label="Candle interval">${[
+          ["1", "1m"],
+          ["5", "5m"],
+          ["15", "15m"],
+          ["30", "30m"],
+          ["60", "1H"],
+          ["240", "4H"],
+          ["D", "1D"]
+        ].map(([value, label]) => `<option value="${value}" ${value === data.stockLive.defaultInterval ? "selected" : ""}>${label}</option>`).join("")}</select>
       </div>
     </div>
     <div class="okx-grid">
-      <div class="live-chart" id="okx-chart"><div class="empty-chart">Loading OKX candles</div></div>
-      <div class="trade-ticket" id="okx-ticket"></div>
+      <div class="live-chart" id="stock-chart"></div>
+      <div class="trade-ticket" id="stock-ticket"></div>
     </div>
   </section>`;
 }
 
-function initOkx(data) {
-  const inst = document.getElementById("okx-inst");
-  const bar = document.getElementById("okx-bar");
-  const chart = document.getElementById("okx-chart");
-  const ticket = document.getElementById("okx-ticket");
+function initStockLive(data) {
+  const symbolSelect = document.getElementById("stock-symbol");
+  const intervalSelect = document.getElementById("stock-interval");
+  const chart = document.getElementById("stock-chart");
+  const ticket = document.getElementById("stock-ticket");
 
-  async function refresh() {
-    const trade = data.okxLive.instruments.find((item) => item.instId === inst.value) || data.okxLive.instruments[0];
-    chart.innerHTML = `<div class="empty-chart">Loading ${esc(inst.value)}</div>`;
-    try {
-      const market = await loadOkx(inst.value, bar.value);
-      const last = Number(market.ticker.last);
-      const open24h = Number(market.ticker.open24h);
-      const change = last && open24h ? (last - open24h) / open24h : 0;
-      chart.innerHTML = `<div class="chart-topline"><strong>${esc(inst.value)}</strong><span class="change ${change >= 0 ? "positive" : "negative"}">${fmtPct(change)}</span></div>${priceChart(market.candles, trade)}`;
-      ticket.innerHTML = `<p class="micro">Current price</p><strong class="live-price">${fmtNumber(last, inst.value.includes("DOGE") || inst.value.includes("XRP") ? 5 : 2)}</strong>
-        <dl>
-          <div><dt>Direction</dt><dd>${esc(trade.direction || "Watch")}</dd></div>
-          <div><dt>Entry</dt><dd>${trade.entry ? fmtNumber(trade.entry, 5) : "Not set"}</dd></div>
-          <div><dt>Stop</dt><dd>${trade.stop ? fmtNumber(trade.stop, 5) : "Not set"}</dd></div>
-          <div><dt>Target</dt><dd>${trade.target ? fmtNumber(trade.target, 5) : "Not set"}</dd></div>
-          <div><dt>Status</dt><dd>${esc(trade.status)}</dd></div>
-        </dl>
-        <p class="privacy-note">${esc(data.okxLive.privacyNote)}</p>`;
-    } catch (error) {
-      chart.innerHTML = `<div class="feed-error">${esc(error.message || "OKX feed failed")}</div>`;
-    }
+  function render() {
+    const stock = data.stockLive.instruments.find((item) => item.symbol === symbolSelect.value) || data.stockLive.instruments[0];
+    const edgeClass = Number(stock.thetaEdge) >= 0 ? "positive" : "negative";
+    chart.innerHTML = `<iframe class="tv-frame" title="${esc(stock.symbol)} live TradingView chart" src="${esc(tradingViewUrl(stock.tvSymbol, intervalSelect.value))}" loading="eager" referrerpolicy="origin"></iframe>`;
+    ticket.innerHTML = `<p class="micro">Theta live edge</p><strong class="live-price ${edgeClass}">${fmtNumber(stock.thetaEdge, 2)}R</strong>
+      <dl>
+        <div><dt>Symbol</dt><dd>${esc(stock.symbol)}</dd></div>
+        <div><dt>TradingView</dt><dd>${esc(stock.tvSymbol)}</dd></div>
+        <div><dt>Interval</dt><dd>${esc(intervalSelect.options[intervalSelect.selectedIndex].text)}</dd></div>
+        <div><dt>Universe</dt><dd>Theta stocks only</dd></div>
+      </dl>
+      <p class="privacy-note">${esc(data.stockLive.privacyNote)}</p>`;
   }
 
-  inst.addEventListener("change", refresh);
-  bar.addEventListener("change", refresh);
-  refresh();
-  window.setInterval(refresh, (data.okxLive.refreshSeconds || 15) * 1000);
+  symbolSelect.addEventListener("change", render);
+  intervalSelect.addEventListener("change", render);
+  render();
 }
 
 function tradeTable(data) {
@@ -180,7 +154,7 @@ function renderDashboard(data) {
   const backtest = data.kpis.backtest;
   app.innerHTML = `
     <section class="hero">
-      <div><p class="eyebrow">Trading System Theta</p><h1>Jewel Analytics Command</h1><p class="hero-copy">Paper, demo, and historical learning dashboard for the locked Theta universe and OKX live price-action watch.</p></div>
+      <div><p class="eyebrow">Trading System Theta</p><h1>Jewel Analytics Command</h1><p class="hero-copy">Paper, demo, and historical learning dashboard for the locked Theta stock universe and TradingView live price-action watch.</p></div>
       <div class="hero-status"><span>Updated ${esc(data.generatedAtDisplay)}</span><span>${esc(data.updateCadence)}</span></div>
     </section>
     <section class="kpi-grid">
@@ -193,7 +167,7 @@ function renderDashboard(data) {
       <div class="panel wide"><div class="section-head"><div><p class="eyebrow">Profitability</p><h2>Cumulative R Curve</h2></div></div>${sparkline(data.charts.profitCurve.map((p) => p.cumulativeR), "var(--green)")}</div>
       <div class="panel"><div class="section-head"><div><p class="eyebrow">Learning</p><h2>System Improvement</h2></div></div>${sparkline(data.charts.learningTrend.map((p) => p.learningScore), "var(--accent)")}</div>
     </section>
-    ${renderOkxShell(data)}
+    ${renderStockLiveShell(data)}
     <section class="dashboard-grid">
       <div class="panel"><div class="section-head"><div><p class="eyebrow">Symbols</p><h2>Backtest Strength</h2></div></div>${bars(data.symbolStats, (r) => r.symbol, (r) => r.backtestAvgR)}</div>
       <div class="panel"><div class="section-head"><div><p class="eyebrow">Outcomes</p><h2>Daily Wins</h2></div></div>${bars(data.charts.dailyOutcomes.slice(-10), (r) => r.date, (r) => r.wins - r.losses)}</div>
@@ -203,7 +177,7 @@ function renderDashboard(data) {
       <div class="panel"><div class="section-head"><div><p class="eyebrow">Learning notes</p><h2>Optimization Log</h2></div></div><ul class="note-list">${[...data.learningNotes.cycleRules, ...data.learningNotes.recent].slice(0, 10).map((note) => `<li>${esc(note)}</li>`).join("")}</ul></div>
       <div class="panel"><div class="section-head"><div><p class="eyebrow">Help needed</p><h2>Missing Learning Gaps</h2></div></div><ul class="note-list">${data.dataQuality.howToHelp.map((note) => `<li>${esc(note)}</li>`).join("")}</ul></div>
     </section>`;
-  initOkx(data);
+  initStockLive(data);
   initTradeTable(data);
 }
 

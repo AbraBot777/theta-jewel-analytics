@@ -13,6 +13,7 @@ fs.copyFileSync(path.join(appRoot, "public", "data", "dashboard.json"), path.joi
 fs.copyFileSync(path.join(appRoot, "app", "globals.css"), path.join(dist, "styles.css"));
 fs.copyFileSync(path.join(appRoot, "static", "app.js"), path.join(dist, "app.js"));
 fs.copyFileSync(path.join(appRoot, "static", "index.html"), path.join(dist, "index.html"));
+fs.copyFileSync(path.join(appRoot, "static", "favicon.svg"), path.join(dist, "favicon.svg"));
 fs.copyFileSync(path.join(appRoot, ".openai", "hosting.json"), path.join(dist, ".openai", "hosting.json"));
 fs.writeFileSync(path.join(dist, ".nojekyll"), "");
 
@@ -32,6 +33,10 @@ const files = {
   "/app.js": {
     contentType: "text/javascript; charset=utf-8",
     body: fs.readFileSync(path.join(dist, "app.js"), "utf8")
+  },
+  "/favicon.svg": {
+    contentType: "image/svg+xml; charset=utf-8",
+    body: fs.readFileSync(path.join(dist, "favicon.svg"), "utf8")
   },
   "/data/dashboard.json": {
     contentType: "application/json; charset=utf-8",

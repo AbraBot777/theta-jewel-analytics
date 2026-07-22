@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-22T09:36:31.607Z",
-  "generatedAtDisplay": "22 Jul 2026, 11:36",
+  "generatedAt": "2026-07-22T09:46:00.639Z",
+  "generatedAtDisplay": "22 Jul 2026, 11:46",
   "timezone": "Africa/Johannesburg",
   "updateCadence": "Every 8 hours from 08:00 SAST: 08:00, 16:00, 00:00.",
   "sourceFiles": [
@@ -8967,54 +8967,47 @@
       "hit15R": 0.185
     }
   ],
-  "okxLive": {
-    "refreshSeconds": 15,
-    "defaultBar": "5m",
+  "stockLive": {
+    "provider": "TradingView",
+    "defaultInterval": "5",
     "instruments": [
       {
-        "instId": "ETH-USDT",
-        "label": "ETH",
-        "source": "OKX Demo journal",
-        "dateTime": "2026-06-09 12:26 Africa/Johannesburg",
-        "dateTimeDisplay": "2026-06-09 12:26 Africa/Johannesburg",
-        "direction": "Long",
-        "timeframe": "15m/1H/4H",
-        "entry": null,
-        "stop": null,
-        "target": null,
-        "status": "Trade still OPEN/unresolved by actual fill data; current ETH about 1673.12, exit order 3640601581023350784 and old target 3640362025632092160 both still reported live with accFillSz 0; unrealised P/L about -0.102 USDT, not realised yet",
-        "notes": "NO_TELEGRAM_UPDATE under wins-only preference; material risk note: no further order placement until OKX demo pending/canceling state clears"
+        "symbol": "TSLA",
+        "tvSymbol": "NASDAQ:TSLA",
+        "thetaEdge": 0.07
       },
       {
-        "instId": "BTC-USDT",
-        "label": "BTC",
-        "source": "OKX Demo journal",
-        "dateTime": "2026-06-09 10:25 Africa/Johannesburg",
-        "dateTimeDisplay": "2026-06-09 10:25 Africa/Johannesburg",
-        "direction": "Long",
-        "timeframe": "15m/1H/4H",
-        "entry": null,
-        "stop": null,
-        "target": null,
-        "status": "Trade OPEN; current unrealised P/L about -0.0830 USDT after valuing the buy fee, not realised yet",
-        "notes": "Journaled before target placement; no Telegram yet because there is no realised or locked win and portfolio decreased versus latest checkpoint"
+        "symbol": "QQQ",
+        "tvSymbol": "NASDAQ:QQQ",
+        "thetaEdge": 0.35
       },
       {
-        "instId": "SUI-USDT",
-        "label": "SUI",
-        "source": "OKX Demo journal",
-        "dateTime": "2026-06-01 15:37 Africa/Johannesburg",
-        "dateTimeDisplay": "2026-06-01 15:37 Africa/Johannesburg",
-        "direction": "Long",
-        "timeframe": "15m/1H/4H",
-        "entry": null,
-        "stop": null,
-        "target": null,
-        "status": "Open demo basket now has target exits for all filled crypto exposures",
-        "notes": "Every filled Beta entry needs a target immediately; monitor will notify Telegram only on wins"
+        "symbol": "SPY",
+        "tvSymbol": "AMEX:SPY",
+        "thetaEdge": 0.17
+      },
+      {
+        "symbol": "DIA",
+        "tvSymbol": "AMEX:DIA",
+        "thetaEdge": 0.15
+      },
+      {
+        "symbol": "NVDA",
+        "tvSymbol": "NASDAQ:NVDA",
+        "thetaEdge": 0.16
+      },
+      {
+        "symbol": "AMD",
+        "tvSymbol": "NASDAQ:AMD",
+        "thetaEdge": 0.09
+      },
+      {
+        "symbol": "GOOGL",
+        "tvSymbol": "NASDAQ:GOOGL",
+        "thetaEdge": -0.02
       }
     ],
-    "privacyNote": "Live OKX graph uses public market candles and tickers only. Private demo account balances, orders, API keys, and secrets are never sent to the browser."
+    "privacyNote": "Live stock chart uses TradingView public chart embeds for the locked Theta stock universe only. Private account balances, orders, API keys, and secrets are never sent to the browser."
   },
   "dataQuality": {
     "missingGaps": [

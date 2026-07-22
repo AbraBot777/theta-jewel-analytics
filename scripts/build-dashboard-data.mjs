@@ -8,6 +8,15 @@ const publicDataDir = path.join(appRoot, "public", "data");
 const outFile = path.join(publicDataDir, "dashboard.json");
 
 const lockedUniverse = ["TSLA", "QQQ", "SPY", "DIA", "NVDA", "AMD", "GOOGL"];
+const liveStockUniverse = [
+  { symbol: "TSLA", tvSymbol: "NASDAQ:TSLA", thetaEdge: 0.07 },
+  { symbol: "QQQ", tvSymbol: "NASDAQ:QQQ", thetaEdge: 0.35 },
+  { symbol: "SPY", tvSymbol: "AMEX:SPY", thetaEdge: 0.17 },
+  { symbol: "DIA", tvSymbol: "AMEX:DIA", thetaEdge: 0.15 },
+  { symbol: "NVDA", tvSymbol: "NASDAQ:NVDA", thetaEdge: 0.16 },
+  { symbol: "AMD", tvSymbol: "NASDAQ:AMD", thetaEdge: 0.09 },
+  { symbol: "GOOGL", tvSymbol: "NASDAQ:GOOGL", thetaEdge: -0.02 }
+];
 
 function readText(filePath, fallback = "") {
   try {
@@ -422,82 +431,6 @@ function activeWatchlistFromCycle() {
   }));
 }
 
-function okxInstrumentFrom(value) {
-  if (!value) return [];
-  const matches = String(value).toUpperCase().match(/[A-Z0-9]+-USDT/g) || [];
-  return [...new Set(matches)];
-}
-
-function parseOkxJournal() {
-  const journalRows = parseCsv(readText(path.join(workspaceRoot, "okx-demo-trading-journal.csv")));
-  const fallback = ["BTC-USDT", "ETH-USDT", "SOL-USDT", "XRP-USDT", "ADA-USDT", "AVAX-USDT", "LINK-USDT", "SUI-USDT", "DOGE-USDT"];
-  const active = [];
-  const seen = new Set();
-
-  const rowTime = (row) => {
-    const match = String(row.date_time || "").match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})/);
-    if (!match) return 0;
-    return Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3]), Number(match[4]) - 2, Number(match[5]));
-  };
-  const rows = [...journalRows].sort((a, b) => rowTime(b) - rowTime(a));
-  for (const row of rows) {
-    const statusText = `${row.actual_exit || ""} ${row.actual_R || ""} ${row.order_type_plan || ""} ${row.tp_sl_oco_plan || ""}`;
-    const isActive =
-      /OPEN|live|filled exposure|target remains|target sell .* remains/i.test(statusText) &&
-      !/no trade|no active|open orders empty|closed loss|closed planned|closed after|no new order; .*open orders empty/i.test(statusText);
-    if (!isActive) continue;
-
-    const instIds = [
-      ...okxInstrumentFrom(row.market),
-      ...okxInstrumentFrom(row.asset),
-      ...okxInstrumentFrom(row.order_type_plan),
-      ...okxInstrumentFrom(row.tp_sl_oco_plan)
-    ];
-
-    for (const instId of instIds) {
-      const coin = instId.replace("-USDT", "");
-      if (new RegExp(`${coin}\\s+closed`, "i").test(statusText)) continue;
-      if (seen.has(instId)) continue;
-      const levelsBelongToInstrument = instIds.length === 1;
-      seen.add(instId);
-      active.push({
-        instId,
-        label: instId.replace("-USDT", ""),
-        source: "OKX Demo journal",
-        dateTime: row.date_time,
-        dateTimeDisplay: row.date_time,
-        direction: /short|sell/i.test(row.setup_type || row.order_type_plan || "") ? "Short" : "Long",
-        timeframe: row.timeframe || "5m",
-        entry: levelsBelongToInstrument ? toNumber(row.entry, null) : null,
-        stop: levelsBelongToInstrument ? toNumber(row.stop, null) : null,
-        target: levelsBelongToInstrument ? toNumber(row.target, null) : null,
-        status: row.actual_exit || row.actual_R || "Open / monitored",
-        notes: row.mistake_lesson || row.setup_type || "Active OKX demo/paper instrument."
-      });
-    }
-    if (active.length >= 9) break;
-  }
-
-  if (!active.length) {
-    return fallback.map((instId) => ({
-      instId,
-      label: instId.replace("-USDT", ""),
-      source: "OKX public watch basket",
-      dateTime: null,
-      dateTimeDisplay: "Fallback watchlist",
-      direction: "Watch",
-      timeframe: "5m",
-      entry: null,
-      stop: null,
-      target: null,
-      status: "No active OKX trade detected locally; showing public watch feed.",
-      notes: "Live price action only. No private account data is exposed."
-    }));
-  }
-
-  return active;
-}
-
 const profile = readJson(path.join(thetaRoot, "data", "theta-jewel-training-profile.json"), {});
 const monitorState = readJson(path.join(thetaRoot, "data", "theta-win-monitor-state.json"), {});
 const ledgerRows = parseCsv(readText(path.join(thetaRoot, "data", "theta-learning-ledger.csv")));
@@ -555,11 +488,11 @@ const dashboard = {
     .slice(0, 500),
   learningNotes,
   activeWatchlist: activeWatchlistFromCycle(),
-  okxLive: {
-    refreshSeconds: 15,
-    defaultBar: "5m",
-    instruments: parseOkxJournal(),
-    privacyNote: "Live OKX graph uses public market candles and tickers only. Private demo account balances, orders, API keys, and secrets are never sent to the browser."
+  stockLive: {
+    provider: "TradingView",
+    defaultInterval: "5",
+    instruments: liveStockUniverse,
+    privacyNote: "Live stock chart uses TradingView public chart embeds for the locked Theta stock universe only. Private account balances, orders, API keys, and secrets are never sent to the browser."
   },
   dataQuality: {
     missingGaps: [
