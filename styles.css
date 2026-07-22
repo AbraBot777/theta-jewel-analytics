@@ -279,6 +279,16 @@ input::placeholder {
   display: block;
 }
 
+.tv-frame {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  display: block;
+  border: 0;
+  border-radius: 6px;
+  background: #070d15;
+}
+
 .price-path {
   fill: none;
   stroke: var(--accent);
@@ -327,6 +337,11 @@ input::placeholder {
   margin-bottom: 16px;
   color: var(--green);
   text-shadow: var(--glow-green);
+}
+
+.live-price.negative {
+  color: var(--red);
+  text-shadow: var(--glow-red);
 }
 
 dl {
