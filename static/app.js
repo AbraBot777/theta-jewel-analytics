@@ -207,7 +207,7 @@ function renderDashboard(data) {
   initTradeTable(data);
 }
 
-fetch("/data/dashboard.json", { cache: "no-store" })
+fetch("data/dashboard.json", { cache: "no-store" })
   .then((response) => response.json())
   .then(renderDashboard)
   .catch((error) => {

@@ -14,6 +14,7 @@ fs.copyFileSync(path.join(appRoot, "app", "globals.css"), path.join(dist, "style
 fs.copyFileSync(path.join(appRoot, "static", "app.js"), path.join(dist, "app.js"));
 fs.copyFileSync(path.join(appRoot, "static", "index.html"), path.join(dist, "index.html"));
 fs.copyFileSync(path.join(appRoot, ".openai", "hosting.json"), path.join(dist, ".openai", "hosting.json"));
+fs.writeFileSync(path.join(dist, ".nojekyll"), "");
 
 const files = {
   "/": {
