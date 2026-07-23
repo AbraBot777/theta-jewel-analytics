@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-22T22:00:00.388Z",
-  "generatedAtDisplay": "23 Jul 2026, 00:00",
+  "generatedAt": "2026-07-23T06:00:00.381Z",
+  "generatedAtDisplay": "23 Jul 2026, 08:00",
   "timezone": "Africa/Johannesburg",
   "updateCadence": "Every 8 hours from 08:00 SAST: 08:00, 16:00, 00:00.",
   "sourceFiles": [
@@ -51,8 +51,8 @@
     },
     "openTrades": 80,
     "ledgerRows": 1699,
-    "lastMonitorRun": "2026-07-22T19:00:07.293437+00:00",
-    "lastMonitorRunDisplay": "22 Jul 2026, 21:00"
+    "lastMonitorRun": "2026-07-23T03:00:45.629307+00:00",
+    "lastMonitorRunDisplay": "23 Jul 2026, 05:00"
   },
   "charts": {
     "dailyOutcomes": [
@@ -2650,6 +2650,19 @@
       },
       {
         "date": "2026-07-22",
+        "trades": 671,
+        "wins": 379,
+        "losses": 287,
+        "timed": 5,
+        "winRate": 0.565,
+        "totalR": 92.6,
+        "avgR": 0.14,
+        "lunarTagged": 0,
+        "lunarAvgR": 0,
+        "learningScore": 42
+      },
+      {
+        "date": "2026-07-23",
         "trades": 671,
         "wins": 379,
         "losses": 287,
