@@ -216,6 +216,62 @@ input::placeholder {
   vector-effect: non-scaling-stroke;
 }
 
+.sparkline circle {
+  fill: var(--accent);
+  stroke: #0b1119;
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}
+
+.learning-chart {
+  display: grid;
+  gap: 12px;
+}
+
+.chart-axis {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.learning-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.learning-stats div {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px;
+  background: var(--panel-3);
+}
+
+.learning-stats span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.learning-stats strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 1rem;
+}
+
+.learning-stats strong.positive {
+  color: var(--green);
+}
+
+.learning-stats strong.negative {
+  color: var(--red);
+}
+
 .empty-chart,
 .feed-error {
   display: grid;
@@ -570,6 +626,10 @@ th {
   .sparkline,
   .price-chart {
     height: 260px;
+  }
+
+  .learning-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

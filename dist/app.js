@@ -35,6 +35,49 @@ function sparkline(points, color = "var(--accent)") {
   return `<svg class="sparkline" viewBox="0 0 100 100" preserveAspectRatio="none">${zero}<path d="${d}" style="stroke:${color}"></path></svg>`;
 }
 
+function learningGraph(rows) {
+  const clean = rows
+    .filter((row) => Number.isFinite(Number(row.learningScore)))
+    .map((row) => ({
+      ...row,
+      learningScore: Number(row.learningScore),
+      winRate: Number(row.winRate),
+      avgR: Number(row.avgR),
+      totalR: Number(row.totalR)
+    }));
+
+  if (clean.length < 2) return `<div class="empty-chart">Not enough learning data</div>`;
+
+  const scores = clean.map((row) => row.learningScore);
+  const min = Math.min(...scores);
+  const max = Math.max(...scores);
+  const span = max - min || 1;
+  const points = clean.map((row, index) => {
+    const x = (index / (clean.length - 1)) * 100;
+    const y = 88 - ((row.learningScore - min) / span) * 76;
+    return { ...row, x, y };
+  });
+  const d = points.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x.toFixed(2)} ${point.y.toFixed(2)}`).join(" ");
+  const first = clean[0];
+  const latest = clean.at(-1);
+  const previous = clean.at(-2);
+  const scoreChange = latest.learningScore - previous.learningScore;
+
+  return `<div class="learning-chart">
+    <svg class="sparkline" viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label="Learning score trend from ${esc(first.date)} to ${esc(latest.date)}">
+      <path d="${d}" style="stroke:var(--accent)"></path>
+      ${points.map((point) => `<circle cx="${point.x.toFixed(2)}" cy="${point.y.toFixed(2)}" r="1.5"><title>${esc(point.date)} score ${point.learningScore}, win ${fmtPct(point.winRate)}, avg ${fmtNumber(point.avgR, 3)}R</title></circle>`).join("")}
+    </svg>
+    <div class="chart-axis"><span>${esc(first.date)}</span><span>${esc(latest.date)}</span></div>
+    <div class="learning-stats">
+      <div><span>Score</span><strong>${latest.learningScore}</strong></div>
+      <div><span>Change</span><strong class="${scoreChange >= 0 ? "positive" : "negative"}">${scoreChange >= 0 ? "+" : ""}${scoreChange}</strong></div>
+      <div><span>Win Rate</span><strong>${fmtPct(latest.winRate)}</strong></div>
+      <div><span>Avg R</span><strong>${fmtNumber(latest.avgR, 3)}R</strong></div>
+    </div>
+  </div>`;
+}
+
 function bars(rows, getLabel, getValue) {
   const values = rows.map(getValue);
   const max = Math.max(...values.map(Math.abs), 1);
@@ -220,7 +263,7 @@ function renderDashboard(data) {
     </section>
     <section class="dashboard-grid">
       <div class="panel wide"><div class="section-head"><div><p class="eyebrow">Profitability</p><h2>Cumulative R Curve</h2></div></div>${sparkline(data.charts.profitCurve.map((p) => p.cumulativeR), "var(--green)")}</div>
-      <div class="panel"><div class="section-head"><div><p class="eyebrow">Learning</p><h2>System Improvement</h2></div></div>${sparkline(data.charts.learningTrend.map((p) => p.learningScore), "var(--accent)")}</div>
+      <div class="panel"><div class="section-head"><div><p class="eyebrow">Learning</p><h2>System Improvement</h2></div></div>${learningGraph(data.charts.learningTrend)}</div>
     </section>
     ${renderStockLiveShell(data)}
     <section class="dashboard-grid">
