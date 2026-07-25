@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-25T06:00:01.322Z",
-  "generatedAtDisplay": "25 Jul 2026, 08:00",
+  "generatedAt": "2026-07-25T14:00:00.348Z",
+  "generatedAtDisplay": "25 Jul 2026, 16:00",
   "timezone": "Africa/Johannesburg",
   "updateCadence": "Every 8 hours from 08:00 SAST: 08:00, 16:00, 00:00.",
   "sourceFiles": [
@@ -34,12 +34,12 @@
   },
   "kpis": {
     "monitored": {
-      "trades": 246,
-      "wins": 132,
-      "losses": 114,
-      "winRate": 0.5365853658536586,
-      "totalR": 36.5,
-      "avgR": 0.148
+      "trades": 251,
+      "wins": 135,
+      "losses": 116,
+      "winRate": 0.5378486055776892,
+      "totalR": 37.5,
+      "avgR": 0.149
     },
     "backtest": {
       "trades": 668,
@@ -50,9 +50,9 @@
       "hit2R": 0.09880239520958084
     },
     "openTrades": 80,
-    "ledgerRows": 2140,
-    "lastMonitorRun": "2026-07-25T03:00:37.810034+00:00",
-    "lastMonitorRunDisplay": "25 Jul 2026, 05:00"
+    "ledgerRows": 2201,
+    "lastMonitorRun": "2026-07-25T13:00:37.547922+00:00",
+    "lastMonitorRunDisplay": "25 Jul 2026, 15:00"
   },
   "charts": {
     "dailyOutcomes": [
@@ -604,27 +604,27 @@
       },
       {
         "date": "16 Jul 2026",
-        "wins": 7,
+        "wins": 8,
         "losses": 0,
-        "r": 10
+        "r": 11
       },
       {
         "date": "17 Jul 2026",
-        "wins": 5,
-        "losses": 3,
+        "wins": 6,
+        "losses": 4,
         "r": 4.5
       },
       {
         "date": "20 Jul 2026",
         "wins": 5,
-        "losses": 6,
-        "r": 1.5
+        "losses": 7,
+        "r": 0.5
       },
       {
         "date": "21 Jul 2026",
-        "wins": 6,
+        "wins": 7,
         "losses": 2,
-        "r": 7
+        "r": 8
       },
       {
         "date": "22 Jul 2026",
@@ -2132,92 +2132,120 @@
         "cumulativeR": 15
       },
       {
-        "label": "17 Jul 2026",
-        "symbol": "AMD",
+        "label": "16 Jul 2026",
+        "symbol": "QQQ",
         "result": "WIN",
-        "r": 1.5,
-        "cumulativeR": 16.5
+        "r": 1,
+        "cumulativeR": 16
       },
       {
         "label": "17 Jul 2026",
         "symbol": "AMD",
         "result": "WIN",
         "r": 1.5,
-        "cumulativeR": 18
+        "cumulativeR": 17.5
       },
       {
         "label": "17 Jul 2026",
         "symbol": "AMD",
         "result": "WIN",
         "r": 1.5,
-        "cumulativeR": 19.5
+        "cumulativeR": 19
       },
       {
         "label": "17 Jul 2026",
         "symbol": "AMD",
         "result": "WIN",
         "r": 1.5,
-        "cumulativeR": 21
+        "cumulativeR": 20.5
+      },
+      {
+        "label": "17 Jul 2026",
+        "symbol": "AMD",
+        "result": "WIN",
+        "r": 1.5,
+        "cumulativeR": 22
+      },
+      {
+        "label": "17 Jul 2026",
+        "symbol": "TSLA",
+        "result": "WIN",
+        "r": 1,
+        "cumulativeR": 23
+      },
+      {
+        "label": "17 Jul 2026",
+        "symbol": "NVDA",
+        "result": "LOSS",
+        "r": -1,
+        "cumulativeR": 22
       },
       {
         "label": "17 Jul 2026",
         "symbol": "TSLA",
         "result": "LOSS",
         "r": -1,
-        "cumulativeR": 20
+        "cumulativeR": 21
       },
       {
         "label": "17 Jul 2026",
         "symbol": "NVDA",
         "result": "WIN",
         "r": 1.5,
-        "cumulativeR": 21.5
+        "cumulativeR": 22.5
       },
       {
         "label": "17 Jul 2026",
         "symbol": "NVDA",
         "result": "LOSS",
         "r": -1,
-        "cumulativeR": 20.5
+        "cumulativeR": 21.5
       },
       {
         "label": "17 Jul 2026",
         "symbol": "AMD",
+        "result": "LOSS",
+        "r": -1,
+        "cumulativeR": 20.5
+      },
+      {
+        "label": "20 Jul 2026",
+        "symbol": "TSLA",
         "result": "LOSS",
         "r": -1,
         "cumulativeR": 19.5
       },
       {
         "label": "20 Jul 2026",
-        "symbol": "TSLA",
+        "symbol": "QQQ",
         "result": "LOSS",
         "r": -1,
         "cumulativeR": 18.5
       },
       {
         "label": "20 Jul 2026",
-        "symbol": "QQQ",
-        "result": "LOSS",
-        "r": -1,
-        "cumulativeR": 17.5
+        "symbol": "TSLA",
+        "result": "WIN",
+        "r": 1.5,
+        "cumulativeR": 20
       },
       {
         "label": "20 Jul 2026",
         "symbol": "TSLA",
-        "result": "WIN",
-        "r": 1.5,
+        "result": "LOSS",
+        "r": -1,
         "cumulativeR": 19
       },
       {
         "label": "20 Jul 2026",
-        "symbol": "TSLA",
+        "symbol": "QQQ",
         "result": "LOSS",
         "r": -1,
         "cumulativeR": 18
       },
       {
         "label": "20 Jul 2026",
-        "symbol": "QQQ",
+        "symbol": "TSLA",
         "result": "LOSS",
         "r": -1,
         "cumulativeR": 17
@@ -2225,43 +2253,43 @@
       {
         "label": "20 Jul 2026",
         "symbol": "TSLA",
-        "result": "LOSS",
-        "r": -1,
-        "cumulativeR": 16
+        "result": "WIN",
+        "r": 1.5,
+        "cumulativeR": 18.5
       },
       {
         "label": "20 Jul 2026",
         "symbol": "TSLA",
         "result": "WIN",
         "r": 1.5,
-        "cumulativeR": 17.5
+        "cumulativeR": 20
       },
       {
         "label": "20 Jul 2026",
         "symbol": "TSLA",
         "result": "WIN",
         "r": 1.5,
-        "cumulativeR": 19
-      },
-      {
-        "label": "20 Jul 2026",
-        "symbol": "TSLA",
-        "result": "WIN",
-        "r": 1.5,
-        "cumulativeR": 20.5
+        "cumulativeR": 21.5
       },
       {
         "label": "20 Jul 2026",
         "symbol": "QQQ",
         "result": "LOSS",
         "r": -1,
-        "cumulativeR": 19.5
+        "cumulativeR": 20.5
       },
       {
         "label": "20 Jul 2026",
         "symbol": "TSLA",
         "result": "WIN",
         "r": 1.5,
+        "cumulativeR": 22
+      },
+      {
+        "label": "20 Jul 2026",
+        "symbol": "DIA",
+        "result": "LOSS",
+        "r": -1,
         "cumulativeR": 21
       },
       {
@@ -2301,66 +2329,73 @@
       },
       {
         "label": "21 Jul 2026",
+        "symbol": "AMD",
+        "result": "WIN",
+        "r": 1,
+        "cumulativeR": 29.5
+      },
+      {
+        "label": "21 Jul 2026",
         "symbol": "TSLA",
         "result": "WIN",
         "r": 1.5,
-        "cumulativeR": 30
+        "cumulativeR": 31
       },
       {
         "label": "21 Jul 2026",
         "symbol": "TSLA",
         "result": "LOSS",
         "r": -1,
-        "cumulativeR": 29
+        "cumulativeR": 30
       },
       {
         "label": "21 Jul 2026",
         "symbol": "AMD",
         "result": "LOSS",
         "r": -1,
-        "cumulativeR": 28
+        "cumulativeR": 29
       },
       {
         "label": "22 Jul 2026",
         "symbol": "AMD",
         "result": "WIN",
         "r": 1,
-        "cumulativeR": 29
+        "cumulativeR": 30
       },
       {
         "label": "22 Jul 2026",
         "symbol": "TSLA",
         "result": "WIN",
         "r": 1.5,
-        "cumulativeR": 30.5
+        "cumulativeR": 31.5
       },
       {
         "label": "23 Jul 2026",
         "symbol": "TSLA",
         "result": "WIN",
         "r": 1.5,
-        "cumulativeR": 32
+        "cumulativeR": 33
       },
       {
         "label": "23 Jul 2026",
         "symbol": "TSLA",
         "result": "WIN",
         "r": 1.5,
-        "cumulativeR": 33.5
+        "cumulativeR": 34.5
       },
       {
         "label": "23 Jul 2026",
         "symbol": "TSLA",
         "result": "WIN",
         "r": 1.5,
-        "cumulativeR": 35
+        "cumulativeR": 36
       },
       {
         "label": "23 Jul 2026",
         "symbol": "TSLA",
         "result": "WIN",
         "r": 1.5,
-        "cumulativeR": 36.5
+        "cumulativeR": 37.5
       }
     ],
     "learningTrend": [
@@ -2861,11 +2896,11 @@
     {
       "symbol": "TSLA",
       "grade": "allowed",
-      "monitoredTrades": 58,
-      "monitoredWins": 34,
+      "monitoredTrades": 59,
+      "monitoredWins": 35,
       "monitoredLosses": 24,
-      "monitoredWinRate": 0.5862068965517241,
-      "monitoredR": 19.5,
+      "monitoredWinRate": 0.5932203389830508,
+      "monitoredR": 20.5,
       "backtestTrades": 133,
       "backtestWinRate": 0.5413533834586466,
       "backtestAvgR": 0.08270676691729328,
@@ -2875,11 +2910,11 @@
     {
       "symbol": "QQQ",
       "grade": "preferred",
-      "monitoredTrades": 35,
-      "monitoredWins": 21,
+      "monitoredTrades": 36,
+      "monitoredWins": 22,
       "monitoredLosses": 14,
-      "monitoredWinRate": 0.6,
-      "monitoredR": 8,
+      "monitoredWinRate": 0.6111111111111112,
+      "monitoredR": 9,
       "backtestTrades": 87,
       "backtestWinRate": 0.6666666666666666,
       "backtestAvgR": 0.3530103821652249,
@@ -2903,11 +2938,11 @@
     {
       "symbol": "DIA",
       "grade": "allowed",
-      "monitoredTrades": 15,
+      "monitoredTrades": 16,
       "monitoredWins": 6,
-      "monitoredLosses": 9,
-      "monitoredWinRate": 0.4,
-      "monitoredR": -3,
+      "monitoredLosses": 10,
+      "monitoredWinRate": 0.375,
+      "monitoredR": -4,
       "backtestTrades": 54,
       "backtestWinRate": 0.5555555555555556,
       "backtestAvgR": 0.1318454884749953,
@@ -2917,11 +2952,11 @@
     {
       "symbol": "NVDA",
       "grade": "allowed",
-      "monitoredTrades": 31,
+      "monitoredTrades": 32,
       "monitoredWins": 15,
-      "monitoredLosses": 16,
-      "monitoredWinRate": 0.4838709677419355,
-      "monitoredR": 0,
+      "monitoredLosses": 17,
+      "monitoredWinRate": 0.46875,
+      "monitoredR": -1,
       "backtestTrades": 122,
       "backtestWinRate": 0.5737704918032787,
       "backtestAvgR": 0.14754098360655737,
@@ -2931,11 +2966,11 @@
     {
       "symbol": "AMD",
       "grade": "allowed",
-      "monitoredTrades": 51,
-      "monitoredWins": 26,
+      "monitoredTrades": 52,
+      "monitoredWins": 27,
       "monitoredLosses": 25,
-      "monitoredWinRate": 0.5098039215686274,
-      "monitoredR": 7,
+      "monitoredWinRate": 0.5192307692307693,
+      "monitoredR": 8,
       "backtestTrades": 105,
       "backtestWinRate": 0.5523809523809524,
       "backtestAvgR": 0.10476190476190463,
@@ -2958,6 +2993,234 @@
     }
   ],
   "tradeHistory": [
+    {
+      "id": "SPY:1d:Long:755.953231:744.756828:772.747834",
+      "source": "swing",
+      "mode": "paper-live",
+      "symbol": "SPY",
+      "timeframe": "1d",
+      "direction": "Long",
+      "openedAt": "2026-07-25T08:00:24.535Z",
+      "openedAtDisplay": "25 Jul 2026, 10:00",
+      "result": "OPEN",
+      "resultLabel": "Open / staged",
+      "rMultiple": 0,
+      "entry": 755.953231,
+      "stop": 744.756828,
+      "target": 772.747834,
+      "trainingGrade": "preferred",
+      "setupFamily": "SPY|1d|Long|jewel-22.5|202.5|dist-0.50|long|lunar-unknown",
+      "notes": "Jewel training preferred; avgR 0.18; 3R reach 2.3%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
+    },
+    {
+      "id": "DIA:1d:Long:528.192635:520.313358:540.011550",
+      "source": "swing",
+      "mode": "paper-live",
+      "symbol": "DIA",
+      "timeframe": "1d",
+      "direction": "Long",
+      "openedAt": "2026-07-25T08:00:24.535Z",
+      "openedAtDisplay": "25 Jul 2026, 10:00",
+      "result": "OPEN",
+      "resultLabel": "Open / staged",
+      "rMultiple": 0,
+      "entry": 528.192635,
+      "stop": 520.313358,
+      "target": 540.01155,
+      "trainingGrade": "allowed",
+      "setupFamily": "DIA|1d|Long|ordinal|315|dist-0.25|long|lunar-unknown",
+      "notes": "Jewel training allowed; avgR 0.13; 3R reach 0.0%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
+    },
+    {
+      "id": "NVDA:1d:Long:214.748714:203.987288:230.890852",
+      "source": "swing",
+      "mode": "paper-live",
+      "symbol": "NVDA",
+      "timeframe": "1d",
+      "direction": "Long",
+      "openedAt": "2026-07-25T08:00:24.535Z",
+      "openedAtDisplay": "25 Jul 2026, 10:00",
+      "result": "OPEN",
+      "resultLabel": "Open / staged",
+      "rMultiple": 0,
+      "entry": 214.748714,
+      "stop": 203.987288,
+      "target": 230.890852,
+      "trainingGrade": "allowed",
+      "setupFamily": "NVDA|1d|Long|cardinal|270|dist-0.25|long|lunar-unknown",
+      "notes": "Jewel training allowed; avgR 0.15; 3R reach 0.8%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
+    },
+    {
+      "id": "AMD:1d:Long:576.128155:518.283863:662.894594",
+      "source": "swing",
+      "mode": "paper-live",
+      "symbol": "AMD",
+      "timeframe": "1d",
+      "direction": "Long",
+      "openedAt": "2026-07-25T08:00:24.535Z",
+      "openedAtDisplay": "25 Jul 2026, 10:00",
+      "result": "OPEN",
+      "resultLabel": "Open / staged",
+      "rMultiple": 0,
+      "entry": 576.128155,
+      "stop": 518.283863,
+      "target": 662.894594,
+      "trainingGrade": "allowed",
+      "setupFamily": "AMD|1d|Long|ordinal|225|dist-0.25|long|lunar-unknown",
+      "notes": "Jewel training allowed; avgR 0.10; 3R reach 4.8%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
+    },
+    {
+      "id": "QQQ:1d:Long:727.079229:706.402802:758.093869",
+      "source": "swing",
+      "mode": "paper-live",
+      "symbol": "QQQ",
+      "timeframe": "1d",
+      "direction": "Long",
+      "openedAt": "2026-07-25T08:00:24.534Z",
+      "openedAtDisplay": "25 Jul 2026, 10:00",
+      "result": "OPEN",
+      "resultLabel": "Open / staged",
+      "rMultiple": 0,
+      "entry": 727.079229,
+      "stop": 706.402802,
+      "target": 758.093869,
+      "trainingGrade": "preferred",
+      "setupFamily": "QQQ|1d|Long|ordinal|225|dist-0.25|long|lunar-unknown",
+      "notes": "Jewel training preferred; avgR 0.35; 3R reach 0.0%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
+    },
+    {
+      "id": "TSLA:1d:Short:314.761562:344.114421:270.732272",
+      "source": "swing",
+      "mode": "paper-live",
+      "symbol": "TSLA",
+      "timeframe": "1d",
+      "direction": "Short",
+      "openedAt": "2026-07-25T08:00:24.533Z",
+      "openedAtDisplay": "25 Jul 2026, 10:00",
+      "result": "OPEN",
+      "resultLabel": "Open / staged",
+      "rMultiple": 0,
+      "entry": 314.761562,
+      "stop": 344.114421,
+      "target": 270.732272,
+      "trainingGrade": "allowed",
+      "setupFamily": "TSLA|1d|Short|jewel-22.5|337.5|dist-0.25|short|lunar-unknown",
+      "notes": "Jewel training allowed; avgR 0.08; 3R reach 3.8%. Daily close is below 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day low break."
+    },
+    {
+      "id": "QQQ:1d:Long:725.020771:705.197198:754.756131",
+      "source": "swing",
+      "mode": "paper-live",
+      "symbol": "QQQ",
+      "timeframe": "1d",
+      "direction": "Long",
+      "openedAt": "2026-07-25T03:00:23.605Z",
+      "openedAtDisplay": "25 Jul 2026, 05:00",
+      "result": "OPEN",
+      "resultLabel": "Open / staged",
+      "rMultiple": 0,
+      "entry": 725.020771,
+      "stop": 705.197198,
+      "target": 754.756131,
+      "trainingGrade": "preferred",
+      "setupFamily": "QQQ|1d|Long|jewel-22.5|202.5|dist-0.25|long|lunar-unknown",
+      "notes": "Jewel training preferred; avgR 0.35; 3R reach 0.0%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
+    },
+    {
+      "id": "SPY:1d:Long:755.960730:744.539331:773.092830",
+      "source": "swing",
+      "mode": "paper-live",
+      "symbol": "SPY",
+      "timeframe": "1d",
+      "direction": "Long",
+      "openedAt": "2026-07-25T03:00:23.605Z",
+      "openedAtDisplay": "25 Jul 2026, 05:00",
+      "result": "OPEN",
+      "resultLabel": "Open / staged",
+      "rMultiple": 0,
+      "entry": 755.96073,
+      "stop": 744.539331,
+      "target": 773.09283,
+      "trainingGrade": "preferred",
+      "setupFamily": "SPY|1d|Long|jewel-22.5|202.5|dist-0.50|long|lunar-unknown",
+      "notes": "Jewel training preferred; avgR 0.18; 3R reach 2.3%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
+    },
+    {
+      "id": "DIA:1d:Long:528.194563:520.257451:540.100231",
+      "source": "swing",
+      "mode": "paper-live",
+      "symbol": "DIA",
+      "timeframe": "1d",
+      "direction": "Long",
+      "openedAt": "2026-07-25T03:00:23.605Z",
+      "openedAtDisplay": "25 Jul 2026, 05:00",
+      "result": "OPEN",
+      "resultLabel": "Open / staged",
+      "rMultiple": 0,
+      "entry": 528.194563,
+      "stop": 520.257451,
+      "target": 540.100231,
+      "trainingGrade": "allowed",
+      "setupFamily": "DIA|1d|Long|ordinal|315|dist-0.25|long|lunar-unknown",
+      "notes": "Jewel training allowed; avgR 0.13; 3R reach 0.0%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
+    },
+    {
+      "id": "NVDA:1d:Long:214.743927:204.126095:230.670675",
+      "source": "swing",
+      "mode": "paper-live",
+      "symbol": "NVDA",
+      "timeframe": "1d",
+      "direction": "Long",
+      "openedAt": "2026-07-25T03:00:23.605Z",
+      "openedAtDisplay": "25 Jul 2026, 05:00",
+      "result": "OPEN",
+      "resultLabel": "Open / staged",
+      "rMultiple": 0,
+      "entry": 214.743927,
+      "stop": 204.126095,
+      "target": 230.670675,
+      "trainingGrade": "allowed",
+      "setupFamily": "NVDA|1d|Long|jewel-22.5|247.5|dist-0.25|long|lunar-unknown",
+      "notes": "Jewel training allowed; avgR 0.15; 3R reach 0.8%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
+    },
+    {
+      "id": "AMD:1d:Long:575.997227:522.080795:656.871875",
+      "source": "swing",
+      "mode": "paper-live",
+      "symbol": "AMD",
+      "timeframe": "1d",
+      "direction": "Long",
+      "openedAt": "2026-07-25T03:00:23.605Z",
+      "openedAtDisplay": "25 Jul 2026, 05:00",
+      "result": "OPEN",
+      "resultLabel": "Open / staged",
+      "rMultiple": 0,
+      "entry": 575.997227,
+      "stop": 522.080795,
+      "target": 656.871875,
+      "trainingGrade": "allowed",
+      "setupFamily": "AMD|1d|Long|jewel-22.5|337.5|dist-0.25|long|lunar-unknown",
+      "notes": "Jewel training allowed; avgR 0.10; 3R reach 4.8%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
+    },
+    {
+      "id": "TSLA:1d:Short:305.527867:334.992153:261.331438",
+      "source": "swing",
+      "mode": "paper-live",
+      "symbol": "TSLA",
+      "timeframe": "1d",
+      "direction": "Short",
+      "openedAt": "2026-07-25T03:00:23.603Z",
+      "openedAtDisplay": "25 Jul 2026, 05:00",
+      "result": "OPEN",
+      "resultLabel": "Open / staged",
+      "rMultiple": 0,
+      "entry": 305.527867,
+      "stop": 334.992153,
+      "target": 261.331438,
+      "trainingGrade": "allowed",
+      "setupFamily": "TSLA|1d|Short|ordinal|315|dist-0.25|short|lunar-unknown",
+      "notes": "Jewel training allowed; avgR 0.08; 3R reach 3.8%. Daily close is below 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day low break."
+    },
     {
       "id": "QQQ:1d:Long:725.013157:705.418020:754.405861",
       "source": "swing",
@@ -2995,25 +3258,6 @@
       "trainingGrade": "preferred",
       "setupFamily": "SPY|1d|Long|ordinal|225|dist-0.25|long|lunar-unknown",
       "notes": "Jewel training preferred; avgR 0.18; 3R reach 2.3%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
-    },
-    {
-      "id": "DIA:1d:Long:528.194563:520.257451:540.100231",
-      "source": "swing",
-      "mode": "paper-live",
-      "symbol": "DIA",
-      "timeframe": "1d",
-      "direction": "Long",
-      "openedAt": "2026-07-24T18:00:28.751Z",
-      "openedAtDisplay": "24 Jul 2026, 20:00",
-      "result": "OPEN",
-      "resultLabel": "Open / staged",
-      "rMultiple": 0,
-      "entry": 528.194563,
-      "stop": 520.257451,
-      "target": 540.100231,
-      "trainingGrade": "preferred",
-      "setupFamily": "DIA|1d|Long|ordinal|315|dist-0.50|long|lunar-unknown",
-      "notes": "Jewel training preferred; avgR 0.15; 3R reach 0.0%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
     },
     {
       "id": "NVDA:1d:Long:214.737784:204.304238:230.388103",
@@ -3070,120 +3314,6 @@
       "target": 263.310997,
       "trainingGrade": "allowed",
       "setupFamily": "TSLA|1d|Short|jewel-22.5|292.5|dist-0.25|short|lunar-unknown",
-      "notes": "Jewel training allowed; avgR 0.08; 3R reach 3.8%. Daily close is below 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day low break."
-    },
-    {
-      "id": "QQQ:1d:Long:727.079229:706.402802:758.093869",
-      "source": "swing",
-      "mode": "paper-live",
-      "symbol": "QQQ",
-      "timeframe": "1d",
-      "direction": "Long",
-      "openedAt": "2026-07-24T13:00:29.775Z",
-      "openedAtDisplay": "24 Jul 2026, 15:00",
-      "result": "OPEN",
-      "resultLabel": "Open / staged",
-      "rMultiple": 0,
-      "entry": 727.079229,
-      "stop": 706.402802,
-      "target": 758.093869,
-      "trainingGrade": "preferred",
-      "setupFamily": "QQQ|1d|Long|ordinal|225|dist-0.25|long|lunar-unknown",
-      "notes": "Jewel training preferred; avgR 0.36; 3R reach 0.0%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
-    },
-    {
-      "id": "SPY:1d:Long:755.953231:744.756828:772.747834",
-      "source": "swing",
-      "mode": "paper-live",
-      "symbol": "SPY",
-      "timeframe": "1d",
-      "direction": "Long",
-      "openedAt": "2026-07-24T13:00:29.775Z",
-      "openedAtDisplay": "24 Jul 2026, 15:00",
-      "result": "OPEN",
-      "resultLabel": "Open / staged",
-      "rMultiple": 0,
-      "entry": 755.953231,
-      "stop": 744.756828,
-      "target": 772.747834,
-      "trainingGrade": "preferred",
-      "setupFamily": "SPY|1d|Long|jewel-22.5|202.5|dist-0.50|long|lunar-unknown",
-      "notes": "Jewel training preferred; avgR 0.18; 3R reach 2.3%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
-    },
-    {
-      "id": "DIA:1d:Long:528.192635:520.313358:540.011550",
-      "source": "swing",
-      "mode": "paper-live",
-      "symbol": "DIA",
-      "timeframe": "1d",
-      "direction": "Long",
-      "openedAt": "2026-07-24T13:00:29.775Z",
-      "openedAtDisplay": "24 Jul 2026, 15:00",
-      "result": "OPEN",
-      "resultLabel": "Open / staged",
-      "rMultiple": 0,
-      "entry": 528.192635,
-      "stop": 520.313358,
-      "target": 540.01155,
-      "trainingGrade": "preferred",
-      "setupFamily": "DIA|1d|Long|ordinal|315|dist-0.25|long|lunar-unknown",
-      "notes": "Jewel training preferred; avgR 0.15; 3R reach 0.0%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
-    },
-    {
-      "id": "NVDA:1d:Long:214.748714:203.987288:230.890852",
-      "source": "swing",
-      "mode": "paper-live",
-      "symbol": "NVDA",
-      "timeframe": "1d",
-      "direction": "Long",
-      "openedAt": "2026-07-24T13:00:29.775Z",
-      "openedAtDisplay": "24 Jul 2026, 15:00",
-      "result": "OPEN",
-      "resultLabel": "Open / staged",
-      "rMultiple": 0,
-      "entry": 214.748714,
-      "stop": 203.987288,
-      "target": 230.890852,
-      "trainingGrade": "preferred",
-      "setupFamily": "NVDA|1d|Long|cardinal|270|dist-0.25|long|lunar-unknown",
-      "notes": "Jewel training preferred; avgR 0.15; 3R reach 0.8%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
-    },
-    {
-      "id": "AMD:1d:Long:576.128155:518.283863:662.894594",
-      "source": "swing",
-      "mode": "paper-live",
-      "symbol": "AMD",
-      "timeframe": "1d",
-      "direction": "Long",
-      "openedAt": "2026-07-24T13:00:29.775Z",
-      "openedAtDisplay": "24 Jul 2026, 15:00",
-      "result": "OPEN",
-      "resultLabel": "Open / staged",
-      "rMultiple": 0,
-      "entry": 576.128155,
-      "stop": 518.283863,
-      "target": 662.894594,
-      "trainingGrade": "allowed",
-      "setupFamily": "AMD|1d|Long|ordinal|225|dist-0.25|long|lunar-unknown",
-      "notes": "Jewel training allowed; avgR 0.09; 3R reach 4.7%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break."
-    },
-    {
-      "id": "TSLA:1d:Short:314.761562:344.114421:270.732272",
-      "source": "swing",
-      "mode": "paper-live",
-      "symbol": "TSLA",
-      "timeframe": "1d",
-      "direction": "Short",
-      "openedAt": "2026-07-24T13:00:29.773Z",
-      "openedAtDisplay": "24 Jul 2026, 15:00",
-      "result": "OPEN",
-      "resultLabel": "Open / staged",
-      "rMultiple": 0,
-      "entry": 314.761562,
-      "stop": 344.114421,
-      "target": 270.732272,
-      "trainingGrade": "allowed",
-      "setupFamily": "TSLA|1d|Short|jewel-22.5|337.5|dist-0.25|short|lunar-unknown",
       "notes": "Jewel training allowed; avgR 0.08; 3R reach 3.8%. Daily close is below 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day low break."
     },
     {
@@ -4108,6 +4238,26 @@
       "notes": "Jewel training allowed; avgR 0.07; 3R reach 3.8%. Daily close is below 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day low break."
     },
     {
+      "id": "history:2026-07-21T13:30:00.000Z:AMD:1H:Long:530.999878:512.954795:549.044961",
+      "source": "history",
+      "mode": "raw-replay",
+      "symbol": "AMD",
+      "timeframe": "1H",
+      "direction": "Long",
+      "openedAt": "2026-07-21T13:30:00.000Z",
+      "openedAtDisplay": "21 Jul 2026, 15:30",
+      "closedAt": "2026-07-21T13:30:00.000Z",
+      "closedAtDisplay": "21 Jul 2026, 15:30",
+      "result": "WIN",
+      "resultLabel": "Won",
+      "rMultiple": 1,
+      "entry": 530.999878,
+      "stop": 512.954795,
+      "target": 549.044961,
+      "exit": null,
+      "notes": "Jewel expanded Square-of-Nine angles: 22.5-degree divisions through 360; held 7 bars"
+    },
+    {
       "id": "swing:2026-07-21T13:00:31.148Z:TSLA:1d:Short:368.778993:388.308989:339.483998",
       "source": "swing",
       "mode": "paper-live",
@@ -4263,6 +4413,26 @@
       "target": 339.516776,
       "exit": null,
       "notes": "{\"entry_ts\":1784813400,\"exit\":339.516776,\"exit_ts\":1784813400}"
+    },
+    {
+      "id": "history:2026-07-20T18:30:00.000Z:DIA:1H:Short:517.940002:520.541447:515.338558",
+      "source": "history",
+      "mode": "raw-replay",
+      "symbol": "DIA",
+      "timeframe": "1H",
+      "direction": "Short",
+      "openedAt": "2026-07-20T18:30:00.000Z",
+      "openedAtDisplay": "20 Jul 2026, 20:30",
+      "closedAt": "2026-07-20T18:30:00.000Z",
+      "closedAtDisplay": "20 Jul 2026, 20:30",
+      "result": "LOSS",
+      "resultLabel": "Lost",
+      "rMultiple": -1,
+      "entry": 517.940002,
+      "stop": 520.541447,
+      "target": 515.338558,
+      "exit": null,
+      "notes": "Jewel expanded Square-of-Nine angles: 22.5-degree divisions through 360; held 2 bars"
     },
     {
       "id": "SPY:1d:Long:755.913017:745.923005:770.898036",
@@ -4924,101 +5094,6 @@
       "notes": "{\"entry_ts\":1784300700,\"exit\":204.263762,\"exit_ts\":1784302200}"
     },
     {
-      "id": "NVDA:5m:Short:202.630036:204.263762:200.179448",
-      "source": "day",
-      "mode": "paper-live",
-      "symbol": "NVDA",
-      "timeframe": "5m",
-      "direction": "Short",
-      "openedAt": "2026-07-17T15:00:34.011Z",
-      "openedAtDisplay": "17 Jul 2026, 17:00",
-      "result": "OPEN",
-      "resultLabel": "Open / staged",
-      "rMultiple": 0,
-      "entry": 202.630036,
-      "stop": 204.263762,
-      "target": 200.179448,
-      "trainingGrade": "lunar-tighten",
-      "setupFamily": "NVDA|5m|Short|ordinal|225|dist-0.25|short|lunar-unknown",
-      "notes": "{\"entry_ts\":1784300700,\"exit\":204.263762,\"exit_ts\":1784302200}"
-    },
-    {
-      "id": "TSLA:5m:Short:378.433731:380.722085:375.001200",
-      "source": "day",
-      "mode": "paper-live",
-      "symbol": "TSLA",
-      "timeframe": "5m",
-      "direction": "Short",
-      "openedAt": "2026-07-17T15:00:34.008Z",
-      "openedAtDisplay": "17 Jul 2026, 17:00",
-      "result": "OPEN",
-      "resultLabel": "Open / staged",
-      "rMultiple": 0,
-      "entry": 378.433731,
-      "stop": 380.722085,
-      "target": 375.0012,
-      "trainingGrade": "allowed",
-      "setupFamily": "TSLA|5m|Short|cardinal|270|dist-0.25|short|lunar-unknown",
-      "notes": "Jewel training allowed; avgR 0.11; 2R hit 19.8%. Price is below 120 EMA/VWAP and close enough to a Square-of-Nine boundary; stage continuation only on break of recent low."
-    },
-    {
-      "id": "AMD:5m:Short:459.902135:469.137837:446.048581",
-      "source": "day",
-      "mode": "paper-live",
-      "symbol": "AMD",
-      "timeframe": "5m",
-      "direction": "Short",
-      "openedAt": "2026-07-17T14:30:28.164Z",
-      "openedAtDisplay": "17 Jul 2026, 16:30",
-      "result": "OPEN",
-      "resultLabel": "Open / staged",
-      "rMultiple": 0,
-      "entry": 459.902135,
-      "stop": 469.137837,
-      "target": 446.048581,
-      "trainingGrade": "preferred",
-      "setupFamily": "AMD|5m|Short|jewel-22.5|202.5|dist-0.50|short|lunar-unknown",
-      "notes": "{\"reason\":\"Baseline row present before wins-only monitor activation\"}"
-    },
-    {
-      "id": "QQQ:5m:Short:686.548397:692.896794:677.025800",
-      "source": "day",
-      "mode": "paper-live",
-      "symbol": "QQQ",
-      "timeframe": "5m",
-      "direction": "Short",
-      "openedAt": "2026-07-17T14:00:20.956Z",
-      "openedAtDisplay": "17 Jul 2026, 16:00",
-      "result": "OPEN",
-      "resultLabel": "Open / staged",
-      "rMultiple": 0,
-      "entry": 686.548397,
-      "stop": 692.896794,
-      "target": 677.0258,
-      "trainingGrade": "lunar-tighten",
-      "setupFamily": "QQQ|5m|Short|jewel-22.5|247.5|dist-0.50|short|lunar-unknown",
-      "notes": "Jewel training lunar-tighten; avgR 0.08; 2R hit 11.5%. Price is below 120 EMA/VWAP and close enough to a Square-of-Nine boundary; stage continuation only on break of recent low."
-    },
-    {
-      "id": "DIA:5m:Short:518.782803:522.299435:513.507855",
-      "source": "day",
-      "mode": "paper-live",
-      "symbol": "DIA",
-      "timeframe": "5m",
-      "direction": "Short",
-      "openedAt": "2026-07-17T14:00:20.956Z",
-      "openedAtDisplay": "17 Jul 2026, 16:00",
-      "result": "OPEN",
-      "resultLabel": "Open / staged",
-      "rMultiple": 0,
-      "entry": 518.782803,
-      "stop": 522.299435,
-      "target": 513.507855,
-      "trainingGrade": "lunar-tighten",
-      "setupFamily": "DIA|5m|Short|jewel-22.5|337.5|dist-0.75|short|lunar-unknown",
-      "notes": "{\"reason\":\"Baseline row present before wins-only monitor activation\"}"
-    },
-    {
       "id": "day:2026-07-17T13:30:10.663Z:NVDA:5m:Short:202.814488:204.539656:200.226737",
       "source": "day",
       "mode": "paper-live",
@@ -5057,6 +5132,46 @@
       "target": 376.034833,
       "exit": null,
       "notes": "{\"entry_ts\":1784295300,\"exit\":384.619324,\"exit_ts\":1784306700}"
+    },
+    {
+      "id": "history:2026-07-17T13:30:00.000Z:TSLA:1H:Short:380.950012:388.513942:373.386082",
+      "source": "history",
+      "mode": "raw-replay",
+      "symbol": "TSLA",
+      "timeframe": "1H",
+      "direction": "Short",
+      "openedAt": "2026-07-17T13:30:00.000Z",
+      "openedAtDisplay": "17 Jul 2026, 15:30",
+      "closedAt": "2026-07-17T13:30:00.000Z",
+      "closedAtDisplay": "17 Jul 2026, 15:30",
+      "result": "WIN",
+      "resultLabel": "Won",
+      "rMultiple": 1,
+      "entry": 380.950012,
+      "stop": 388.513942,
+      "target": 373.386082,
+      "exit": null,
+      "notes": "Jewel expanded Square-of-Nine angles: 22.5-degree divisions through 360; held 8 bars"
+    },
+    {
+      "id": "history:2026-07-17T13:30:00.000Z:NVDA:1H:Short:203.800003:209.098343:198.501663",
+      "source": "history",
+      "mode": "raw-replay",
+      "symbol": "NVDA",
+      "timeframe": "1H",
+      "direction": "Short",
+      "openedAt": "2026-07-17T13:30:00.000Z",
+      "openedAtDisplay": "17 Jul 2026, 15:30",
+      "closedAt": "2026-07-17T13:30:00.000Z",
+      "closedAtDisplay": "17 Jul 2026, 15:30",
+      "result": "LOSS",
+      "resultLabel": "Lost",
+      "rMultiple": -1,
+      "entry": 203.800003,
+      "stop": 209.098343,
+      "target": 198.501663,
+      "exit": null,
+      "notes": "Jewel expanded Square-of-Nine angles: 22.5-degree divisions through 360; held 22 bars"
     },
     {
       "id": "day:2026-07-17T13:00:02.481Z:AMD:5m:Short:493.230925:496.503053:488.322734",
@@ -5137,6 +5252,26 @@
       "target": 488.322734,
       "exit": null,
       "notes": "{\"entry_ts\":1784295000,\"exit\":488.322734,\"exit_ts\":1784295000}"
+    },
+    {
+      "id": "history:2026-07-16T18:30:00.000Z:QQQ:1H:Short:704.289978:712.088911:696.491045",
+      "source": "history",
+      "mode": "raw-replay",
+      "symbol": "QQQ",
+      "timeframe": "1H",
+      "direction": "Short",
+      "openedAt": "2026-07-16T18:30:00.000Z",
+      "openedAtDisplay": "16 Jul 2026, 20:30",
+      "closedAt": "2026-07-16T18:30:00.000Z",
+      "closedAtDisplay": "16 Jul 2026, 20:30",
+      "result": "WIN",
+      "resultLabel": "Won",
+      "rMultiple": 1,
+      "entry": 704.289978,
+      "stop": 712.088911,
+      "target": 696.491045,
+      "exit": null,
+      "notes": "Jewel expanded Square-of-Nine angles: 22.5-degree divisions through 360; held 2 bars"
     },
     {
       "id": "day:2026-07-16T16:52:34.295Z:QQQ:5m:Short:707.010702:710.289493:702.092515",
@@ -9402,19 +9537,19 @@
   "learningNotes": {
     "recent": [
       "TSLA|1H|Long|ordinal|225|dist-0.25|with-trend|non-lunar: 0W/3L, -3.00R.",
-      "Raw: 186 trades, 52.7% wins, 11.12R total, 0.060R avg.",
-      "Memory: 169 trades, 17 skips, 52.7% wins, 10.12R total, 0.060R avg.",
+      "Raw: 0 trades, 0.0% wins, 0.00R total, 0.000R avg.",
+      "Memory: 0 trades, 0 skips, 0.0% wins, 0.00R total, 0.000R avg.",
+      "Promotion status: not promoted; keep as research/advisory memory.",
+      "No repeated loss family found in this replay.",
+      "Raw: 191 trades, 52.9% wins, 12.12R total, 0.063R avg.",
+      "Memory: 174 trades, 17 skips, 52.9% wins, 11.12R total, 0.064R avg.",
       "Promotion status: not promoted; keep as research/advisory memory.",
       "TSLA|1H|Short|ordinal|315|dist-0.25|with-trend|non-lunar: 1W/4L, -3.00R.",
       "DIA|1H|Long|ordinal|225|dist-0.50|with-trend|non-lunar: 1W/4L, -3.00R.",
       "AMD|1H|Short|cardinal|360|dist-0.25|with-trend|non-lunar: 0W/3L, -3.00R.",
       "NVDA|1H|Long|ordinal|315|dist-0.50|with-trend|non-lunar: 0W/3L, -3.00R.",
       "AMD|1H|Short|ordinal|315|dist-0.25|with-trend|non-lunar: 0W/3L, -3.00R.",
-      "TSLA|1H|Long|ordinal|225|dist-0.25|with-trend|non-lunar: 0W/3L, -3.00R.",
-      "Raw: 0 trades, 0.0% wins, 0.00R total, 0.000R avg.",
-      "Memory: 0 trades, 0 skips, 0.0% wins, 0.00R total, 0.000R avg.",
-      "Promotion status: not promoted; keep as research/advisory memory.",
-      "No repeated loss family found in this replay."
+      "TSLA|1H|Long|ordinal|225|dist-0.25|with-trend|non-lunar: 0W/3L, -3.00R."
     ],
     "cycleRules": [
       "Highest focus requires preferred/allowed/lunar-tighten training, trend agreement, SO9 distance <= 0.75 ATR, and compression near a boundary.",
@@ -9422,7 +9557,64 @@
       "Lunar context is recorded for study, but lunar-tagged setups require stronger confirmation because current training shows lunar underperformance.",
       "Track whether recurring pivot cycles cluster before successful paper entries; do not trade cycle rhythm without price and risk confirmation."
     ],
-    "repeatedLossFamilies": []
+    "repeatedLossFamilies": [
+      {
+        "setup": "TSLA",
+        "wins": 0,
+        "losses": 0,
+        "totalR": 0,
+        "winRate": 3.15
+      },
+      {
+        "setup": "DIA",
+        "wins": 0,
+        "losses": 0,
+        "totalR": 0,
+        "winRate": 2.25
+      },
+      {
+        "setup": "AMD",
+        "wins": 0,
+        "losses": 0,
+        "totalR": 0,
+        "winRate": 3.6
+      },
+      {
+        "setup": "NVDA",
+        "wins": 0,
+        "losses": 0,
+        "totalR": 0,
+        "winRate": 3.15
+      },
+      {
+        "setup": "AMD",
+        "wins": 0,
+        "losses": 0,
+        "totalR": 0,
+        "winRate": 3.15
+      },
+      {
+        "setup": "TSLA",
+        "wins": 0,
+        "losses": 0,
+        "totalR": 0,
+        "winRate": 2.25
+      },
+      {
+        "setup": "GOOGL",
+        "wins": 0,
+        "losses": 0,
+        "totalR": 0,
+        "winRate": 3.6
+      },
+      {
+        "setup": "GOOGL",
+        "wins": 0,
+        "losses": 0,
+        "totalR": 0,
+        "winRate": 3.6
+      }
+    ]
   },
   "activeWatchlist": [
     {
