@@ -7,15 +7,14 @@ const thetaRoot = path.join(workspaceRoot, "trading-system-theta-gann");
 const publicDataDir = path.join(appRoot, "public", "data");
 const outFile = path.join(publicDataDir, "dashboard.json");
 
-const lockedUniverse = ["TSLA", "QQQ", "SPY", "DIA", "NVDA", "AMD", "GOOGL"];
+const lockedUniverse = ["TSLA", "QQQ", "SPY", "NVDA", "AMD"];
+const retiredSymbols = new Set(["DIA", "GOOGL"]);
 const liveStockUniverse = [
   { symbol: "TSLA", tvSymbol: "NASDAQ:TSLA", thetaEdge: 0.07 },
   { symbol: "QQQ", tvSymbol: "NASDAQ:QQQ", thetaEdge: 0.35 },
   { symbol: "SPY", tvSymbol: "AMEX:SPY", thetaEdge: 0.17 },
-  { symbol: "DIA", tvSymbol: "AMEX:DIA", thetaEdge: 0.15 },
   { symbol: "NVDA", tvSymbol: "NASDAQ:NVDA", thetaEdge: 0.16 },
-  { symbol: "AMD", tvSymbol: "NASDAQ:AMD", thetaEdge: 0.09 },
-  { symbol: "GOOGL", tvSymbol: "NASDAQ:GOOGL", thetaEdge: -0.02 }
+  { symbol: "AMD", tvSymbol: "NASDAQ:AMD", thetaEdge: 0.09 }
 ];
 
 function readText(filePath, fallback = "") {
@@ -144,6 +143,14 @@ function splitMonitorKey(key) {
     stop: toNumber(parts[7], null),
     target: toNumber(parts[8], null)
   };
+}
+
+function mentionsRetiredSymbol(value) {
+  const text = String(value || "");
+  for (const symbol of retiredSymbols) {
+    if (new RegExp(`\\b${symbol}\\b`).test(text)) return true;
+  }
+  return false;
 }
 
 function tradeR(result, entry, stop, target) {
@@ -373,14 +380,25 @@ function parseBacktestReports() {
   return trend;
 }
 
+function latestReportText(prefix) {
+  const reportsDir = path.join(thetaRoot, "reports");
+  if (!fs.existsSync(reportsDir)) return "";
+  const file = fs.readdirSync(reportsDir)
+    .filter((name) => name.startsWith(prefix) && name.endsWith(".md"))
+    .sort()
+    .at(-1);
+  return file ? readText(path.join(reportsDir, file)) : "";
+}
+
 function extractRecentLearningNotes() {
   const notesMd = readText(path.join(thetaRoot, "data", "theta-learnings.md"));
-  const cycleMd = readText(path.join(thetaRoot, "reports", "theta-cycle-pattern-analysis-2026-07-22.md"));
-  const replayMd = readText(path.join(thetaRoot, "reports", "theta-learning-replay-2026-07-21.md"));
+  const cycleMd = latestReportText("theta-cycle-pattern-analysis-");
+  const replayMd = latestReportText("theta-learning-replay-");
 
   const learningNotes = notesMd
     .split("\n")
     .filter((line) => line.trim().startsWith("- "))
+    .filter((line) => !mentionsRetiredSymbol(line))
     .slice(-14)
     .map((line) => line.replace(/^- /, "").trim());
 
@@ -401,6 +419,7 @@ function extractRecentLearningNotes() {
           winRate: toNumber(cells[4]) / 100
         };
       })
+      .filter((row) => !mentionsRetiredSymbol(row.setup))
     : [];
 
   return {
@@ -411,7 +430,7 @@ function extractRecentLearningNotes() {
 }
 
 function activeWatchlistFromCycle() {
-  const latestReport = readText(path.join(thetaRoot, "reports", "theta-cycle-pattern-analysis-2026-07-22.md"));
+  const latestReport = latestReportText("theta-cycle-pattern-analysis-");
   const rows = parseMdTable(latestReport, "| Symbol | Grade | Pattern");
   return rows.map((row) => ({
     symbol: row[0],
@@ -441,6 +460,7 @@ const series = dailySeries(closedTrades);
 const learningTrend = parseBacktestReports();
 const learningNotes = extractRecentLearningNotes();
 const latestLearning = learningTrend.at(-1) || {};
+const previousLearning = learningTrend.at(-2) || {};
 
 const dashboard = {
   generatedAt: new Date().toISOString(),
@@ -453,8 +473,8 @@ const dashboard = {
     "trading-system-theta-gann/data/theta-jewel-training-profile.json",
     "trading-system-theta-gann/data/theta-learnings.md",
     "trading-system-theta-gann/reports/theta-history-backtest-*.md",
-    "trading-system-theta-gann/reports/theta-cycle-pattern-analysis-2026-07-22.md",
-    "trading-system-theta-gann/reports/theta-learning-replay-2026-07-21.md"
+    "trading-system-theta-gann/reports/theta-cycle-pattern-analysis-*.md",
+    "trading-system-theta-gann/reports/theta-learning-replay-*.md"
   ],
   stance: {
     name: "Trading System Theta + Jewel",
@@ -480,7 +500,19 @@ const dashboard = {
   charts: {
     dailyOutcomes: series.dailyOutcomes,
     profitCurve: series.profitCurve,
-    learningTrend
+    learningTrend,
+    learningTrendSummary: {
+      points: learningTrend.length,
+      latestDate: latestLearning.date || null,
+      latestScore: latestLearning.learningScore ?? null,
+      previousScore: previousLearning.learningScore ?? null,
+      scoreChange: Number.isFinite(latestLearning.learningScore) && Number.isFinite(previousLearning.learningScore)
+        ? latestLearning.learningScore - previousLearning.learningScore
+        : null,
+      latestWinRate: latestLearning.winRate ?? null,
+      latestAvgR: latestLearning.avgR ?? null,
+      latestTotalR: latestLearning.totalR ?? null
+    }
   },
   symbolStats: symbolStats(closedTrades, profile),
   tradeHistory: [...closedTrades, ...openTrades]
