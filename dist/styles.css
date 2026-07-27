@@ -272,6 +272,63 @@ input::placeholder {
   color: var(--red);
 }
 
+.learning-architecture {
+  margin: 18px 0;
+}
+
+.architecture-meta {
+  display: grid;
+  gap: 4px;
+  justify-items: end;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.priority-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.priority-card {
+  min-width: 0;
+  min-height: 116px;
+  display: grid;
+  align-content: space-between;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-3);
+}
+
+.priority-card.is-preferred {
+  border-color: rgba(41, 242, 154, 0.42);
+  box-shadow: inset 0 0 0 1px rgba(41, 242, 154, 0.12), var(--glow-green);
+}
+
+.priority-card span,
+.priority-card small {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.priority-card span {
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.priority-card strong {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.architecture-lessons {
+  margin-top: 16px;
+}
+
 .empty-chart,
 .feed-error {
   display: grid;
@@ -631,6 +688,14 @@ th {
   .learning-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .priority-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .architecture-meta {
+    justify-items: start;
+  }
 }
 
 @media (max-width: 520px) {
@@ -655,5 +720,9 @@ th {
   .tradingview-widget-container {
     height: 400px;
     min-height: 400px;
+  }
+
+  .priority-grid {
+    grid-template-columns: 1fr;
   }
 }

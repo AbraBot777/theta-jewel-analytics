@@ -91,6 +91,26 @@ function bars(rows, getLabel, getValue) {
   }).join("")}</div>`;
 }
 
+function renderLearningArchitecture(data) {
+  const architecture = data.learningArchitecture || {};
+  const cards = architecture.symbolCards || [];
+  const lessons = architecture.lessons || [];
+  return `<section class="panel learning-architecture">
+    <div class="section-head">
+      <div><p class="eyebrow">Learning Architecture</p><h2>Promoted Priority Memory</h2></div>
+      <div class="architecture-meta"><span>${esc(architecture.status || "active")}</span><span>${esc(architecture.sample || "")}</span></div>
+    </div>
+    <div class="priority-grid">
+      ${cards.map((card) => `<div class="priority-card ${card.grade === "preferred" ? "is-preferred" : ""}">
+        <span>#${card.priority} ${esc(card.grade)}</span>
+        <strong>${esc(card.symbol)}</strong>
+        <small>${fmtPct(card.winRate)} win / ${fmtNumber(card.avgR, 3)}R avg / ${fmtPct(card.hit15R)} 1.5R reach</small>
+      </div>`).join("")}
+    </div>
+    <ul class="note-list architecture-lessons">${lessons.slice(0, 6).map((lesson) => `<li>${esc(lesson)}</li>`).join("")}</ul>
+  </section>`;
+}
+
 function tradingViewChartUrl(symbol) {
   return `https://www.tradingview.com/chart/?symbol=${encodeURIComponent(symbol)}`;
 }
@@ -265,6 +285,7 @@ function renderDashboard(data) {
       <div class="panel wide"><div class="section-head"><div><p class="eyebrow">Profitability</p><h2>Cumulative R Curve</h2></div></div>${sparkline(data.charts.profitCurve.map((p) => p.cumulativeR), "var(--green)")}</div>
       <div class="panel"><div class="section-head"><div><p class="eyebrow">Learning</p><h2>System Improvement</h2></div></div>${learningGraph(data.charts.learningTrend)}</div>
     </section>
+    ${renderLearningArchitecture(data)}
     ${renderStockLiveShell(data)}
     <section class="dashboard-grid">
       <div class="panel"><div class="section-head"><div><p class="eyebrow">Symbols</p><h2>Backtest Strength</h2></div></div>${bars(data.symbolStats, (r) => r.symbol, (r) => r.backtestAvgR)}</div>

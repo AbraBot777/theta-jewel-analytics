@@ -450,6 +450,36 @@ function activeWatchlistFromCycle() {
   }));
 }
 
+function buildLearningArchitecture(profile) {
+  const architecture = profile?.learning_architecture || {};
+  const priority = architecture.priority_order?.length
+    ? architecture.priority_order
+    : lockedUniverse;
+  return {
+    status: architecture.status || "active",
+    promotedAt: architecture.promoted_at || profile?.generated_at || null,
+    sourceReport: architecture.source_report || "",
+    sample: architecture.sample || `${profile?.range || "current"} ${profile?.interval || ""}`.trim(),
+    priorityOrder: priority,
+    preferredSymbols: architecture.preferred_symbols || priority.filter((symbol) => profile?.symbols?.[symbol]?.grade === "preferred"),
+    allowedSecondarySymbols: architecture.allowed_secondary_symbols || priority.filter((symbol) => profile?.symbols?.[symbol]?.grade === "allowed"),
+    retiredSymbols: architecture.retired_symbols || [...retiredSymbols],
+    lessons: architecture.lessons || profile.operating_rules || [],
+    symbolCards: priority.map((symbol, index) => {
+      const stats = profile?.symbols?.[symbol] || {};
+      return {
+        symbol,
+        priority: index + 1,
+        grade: stats.grade || "ungraded",
+        winRate: stats.win_rate || 0,
+        avgR: stats.avg_r || 0,
+        totalR: stats.total_r || 0,
+        hit15R: stats.target_hit_rates?.["1.5"] || 0
+      };
+    })
+  };
+}
+
 const profile = readJson(path.join(thetaRoot, "data", "theta-jewel-training-profile.json"), {});
 const monitorState = readJson(path.join(thetaRoot, "data", "theta-win-monitor-state.json"), {});
 const ledgerRows = parseCsv(readText(path.join(thetaRoot, "data", "theta-learning-ledger.csv")));
@@ -519,6 +549,7 @@ const dashboard = {
     .sort((a, b) => new Date(b.closedAt || b.openedAt) - new Date(a.closedAt || a.openedAt))
     .slice(0, 500),
   learningNotes,
+  learningArchitecture: buildLearningArchitecture(profile),
   activeWatchlist: activeWatchlistFromCycle(),
   stockLive: {
     provider: "TradingView",
