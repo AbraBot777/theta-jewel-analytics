@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-27T18:50:08.389Z",
-  "generatedAtDisplay": "27 Jul 2026, 20:50",
+  "generatedAt": "2026-07-27T22:00:00.393Z",
+  "generatedAtDisplay": "28 Jul 2026, 00:00",
   "timezone": "Africa/Johannesburg",
   "updateCadence": "Every 8 hours from 08:00 SAST: 08:00, 16:00, 00:00.",
   "sourceFiles": [
@@ -59,9 +59,9 @@
       "hit2R": 0.10714285714285714
     },
     "openTrades": 10,
-    "ledgerRows": 2448,
-    "lastMonitorRun": "2026-07-27T18:50:04.465697+00:00",
-    "lastMonitorRunDisplay": "27 Jul 2026, 20:50"
+    "ledgerRows": 2500,
+    "lastMonitorRun": "2026-07-27T20:50:38.329247+00:00",
+    "lastMonitorRunDisplay": "27 Jul 2026, 22:50"
   },
   "charts": {
     "dailyOutcomes": [
@@ -2508,6 +2508,44 @@
   ],
   "tradeHistory": [
     {
+      "id": "day:AMD:5m",
+      "source": "day",
+      "mode": "paper-live",
+      "symbol": "AMD",
+      "timeframe": "5m",
+      "direction": "Short",
+      "openedAt": "2026-07-27T20:40:01.259Z",
+      "openedAtDisplay": "27 Jul 2026, 22:40",
+      "result": "OPEN",
+      "resultLabel": "Open / staged",
+      "rMultiple": 0,
+      "entry": 489.487051,
+      "stop": 492.5754,
+      "target": 486.398703,
+      "trainingGrade": "allowed",
+      "setupFamily": "AMD|5m|Short|ordinal|225|dist-0.25|short|non-lunar",
+      "notes": "Jewel training allowed; win 54.7%; avgR 0.09; 1.5R reach 16.0%. Price is below 120 EMA/VWAP and close enough to a Square-of-Nine boundary; stage continuation only on break of recent low."
+    },
+    {
+      "id": "day:TSLA:5m",
+      "source": "day",
+      "mode": "paper-live",
+      "symbol": "TSLA",
+      "timeframe": "5m",
+      "direction": "Short",
+      "openedAt": "2026-07-27T18:50:01.236Z",
+      "openedAtDisplay": "27 Jul 2026, 20:50",
+      "result": "OPEN",
+      "resultLabel": "Open / staged",
+      "rMultiple": 0,
+      "entry": 305.402969,
+      "stop": 306.513968,
+      "target": 304.29197,
+      "trainingGrade": "allowed",
+      "setupFamily": "TSLA|5m|Short|cardinal|270|dist-0.50|short|non-lunar",
+      "notes": "Jewel training allowed; win 53.8%; avgR 0.08; 1.5R reach 20.5%. Price is below 120 EMA/VWAP and close enough to a Square-of-Nine boundary; stage continuation only on break of recent low."
+    },
+    {
       "id": "day:NVDA:5m",
       "source": "day",
       "mode": "paper-live",
@@ -2722,25 +2760,6 @@
       "notes": "Closed by THETA win monitor."
     },
     {
-      "id": "day:AMD:5m",
-      "source": "day",
-      "mode": "paper-live",
-      "symbol": "AMD",
-      "timeframe": "5m",
-      "direction": "Long",
-      "openedAt": "2026-07-23T08:00:28.726Z",
-      "openedAtDisplay": "23 Jul 2026, 10:00",
-      "result": "OPEN",
-      "resultLabel": "Open / staged",
-      "rMultiple": 0,
-      "entry": 561.629819,
-      "stop": 556.834365,
-      "target": 566.425273,
-      "trainingGrade": "allowed",
-      "setupFamily": "AMD|5m|Long|cardinal|270|dist-0.25|long|non-lunar",
-      "notes": "Jewel training allowed; win 54.7%; avgR 0.09; 1.5R reach 17.0%. Price is above 120 EMA/VWAP and close enough to a Square-of-Nine boundary; stage continuation only on break of recent high."
-    },
-    {
       "id": "day:1111:2026-07-22T14:01:30.496Z:AMD:5m:Long:553.742671:548.258793:559.226549",
       "source": "day",
       "mode": "paper-monitored",
@@ -2779,25 +2798,6 @@
       "target": 556.945671,
       "exit": 556.945671,
       "notes": "Closed by THETA win monitor."
-    },
-    {
-      "id": "day:TSLA:5m",
-      "source": "day",
-      "mode": "paper-live",
-      "symbol": "TSLA",
-      "timeframe": "5m",
-      "direction": "Long",
-      "openedAt": "2026-07-22T14:01:30.493Z",
-      "openedAtDisplay": "22 Jul 2026, 16:01",
-      "result": "OPEN",
-      "resultLabel": "Open / staged",
-      "rMultiple": 0,
-      "entry": 380.237332,
-      "stop": 378.217764,
-      "target": 382.256901,
-      "trainingGrade": "allowed",
-      "setupFamily": "TSLA|5m|Long|cardinal|270|dist-0.75|long|non-lunar",
-      "notes": "Jewel training allowed; win 53.4%; avgR 0.07; 1.5R reach 20.3%. Aggressive paper mode: Price is above 120 EMA/VWAP and close enough to a Square-of-Nine boundary; stage continuation only on break of recent high."
     },
     {
       "id": "day:978:2026-07-21T19:13:39.114Z:AMD:5m:Long:548.226709:545.622229:550.831188",
