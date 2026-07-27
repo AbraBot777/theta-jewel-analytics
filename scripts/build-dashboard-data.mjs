@@ -463,6 +463,7 @@ function buildLearningArchitecture(profile) {
     priorityOrder: priority,
     preferredSymbols: architecture.preferred_symbols || priority.filter((symbol) => profile?.symbols?.[symbol]?.grade === "preferred"),
     allowedSecondarySymbols: architecture.allowed_secondary_symbols || priority.filter((symbol) => profile?.symbols?.[symbol]?.grade === "allowed"),
+    reviewOnlySymbols: architecture.review_only_symbols || priority.filter((symbol) => profile?.symbols?.[symbol]?.grade === "review-only"),
     retiredSymbols: architecture.retired_symbols || [...retiredSymbols],
     lessons: architecture.lessons || profile.operating_rules || [],
     symbolCards: priority.map((symbol, index) => {

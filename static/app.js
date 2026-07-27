@@ -101,7 +101,7 @@ function renderLearningArchitecture(data) {
       <div class="architecture-meta"><span>${esc(architecture.status || "active")}</span><span>${esc(architecture.sample || "")}</span></div>
     </div>
     <div class="priority-grid">
-      ${cards.map((card) => `<div class="priority-card ${card.grade === "preferred" ? "is-preferred" : ""}">
+      ${cards.map((card) => `<div class="priority-card ${card.grade === "preferred" ? "is-preferred" : ""} ${card.grade === "review-only" ? "is-review" : ""}">
         <span>#${card.priority} ${esc(card.grade)}</span>
         <strong>${esc(card.symbol)}</strong>
         <small>${fmtPct(card.winRate)} win / ${fmtNumber(card.avgR, 3)}R avg / ${fmtPct(card.hit15R)} 1.5R reach</small>
