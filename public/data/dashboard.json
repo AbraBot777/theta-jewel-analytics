@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-27T09:25:01.791Z",
-  "generatedAtDisplay": "27 Jul 2026, 11:25",
+  "generatedAt": "2026-07-27T11:27:20.200Z",
+  "generatedAtDisplay": "27 Jul 2026, 13:27",
   "timezone": "Africa/Johannesburg",
   "updateCadence": "Every 8 hours from 08:00 SAST: 08:00, 16:00, 00:00.",
   "sourceFiles": [
@@ -18,6 +18,12 @@
       "TSLA",
       "QQQ",
       "SPY",
+      "NVDA",
+      "AMD"
+    ],
+    "aggressiveFocus": [
+      "TSLA",
+      "QQQ",
       "NVDA",
       "AMD"
     ],
@@ -54,8 +60,8 @@
     },
     "openTrades": 80,
     "ledgerRows": 2201,
-    "lastMonitorRun": "2026-07-27T08:00:42.603320+00:00",
-    "lastMonitorRunDisplay": "27 Jul 2026, 10:00"
+    "lastMonitorRun": "2026-07-27T11:26:23.336557+00:00",
+    "lastMonitorRunDisplay": "27 Jul 2026, 13:26"
   },
   "charts": {
     "dailyOutcomes": [
@@ -8346,6 +8352,7 @@
       "TSLA receives priority when setup quality is comparable.",
       "Full-history calibration keeps NVDA, AMD, and QQQ as tradable secondary symbols, with QQQ still supported by the stronger 5-year recency pass.",
       "SPY is review-only because full-history expectancy is too close to breakeven.",
+      "Aggressive paper day-trade and swing focus is limited to TSLA, QQQ, NVDA, and AMD for the next operating cycle.",
       "SPY remains valid but needs cleaner confluence before receiving equal attention.",
       "The core edge is the 1R first target; 1.5R+ is runner research only.",
       "GOOGL and DIA are excluded from active scanning, staging, and app watchlists until explicitly re-qualified."
@@ -8412,8 +8419,8 @@
       "barsSincePivot": 3,
       "compression": 5.9,
       "lunar": "apogee 21h",
-      "avgR": 0.07,
-      "hit15R": 0.111
+      "avgR": 0.12,
+      "hit15R": 0.11
     },
     {
       "symbol": "AMD",
@@ -8428,12 +8435,12 @@
       "barsSincePivot": 3,
       "compression": 5,
       "lunar": "apogee 21h",
-      "avgR": 0.14,
-      "hit15R": 0.22699999999999998
+      "avgR": 0.08,
+      "hit15R": 0.131
     },
     {
       "symbol": "QQQ",
-      "grade": "preferred",
+      "grade": "allowed",
       "pattern": "wait-for-boundary",
       "action": "observe",
       "close": 684.23,
@@ -8444,8 +8451,8 @@
       "barsSincePivot": 3,
       "compression": 6.6,
       "lunar": "apogee 21h",
-      "avgR": 0.16,
-      "hit15R": 0.1
+      "avgR": 0.07,
+      "hit15R": 0.077
     },
     {
       "symbol": "TSLA",
@@ -8460,24 +8467,8 @@
       "barsSincePivot": 3,
       "compression": 3.9,
       "lunar": "apogee 21h",
-      "avgR": 0.22,
-      "hit15R": 0.171
-    },
-    {
-      "symbol": "SPY",
-      "grade": "allowed",
-      "pattern": "wait-for-boundary",
-      "action": "observe",
-      "close": 738.93,
-      "trend": "daily-up/intraday-down",
-      "so9": "202.5 jewel-22.5 below 735.7656",
-      "distanceAtr": 3.1,
-      "pivotCycle": 4,
-      "barsSincePivot": 3,
-      "compression": 6.3,
-      "lunar": "apogee 21h",
-      "avgR": 0.06,
-      "hit15R": 0.061
+      "avgR": 0.18,
+      "hit15R": 0.133
     }
   ],
   "stockLive": {
@@ -8495,11 +8486,6 @@
         "thetaEdge": 0.35
       },
       {
-        "symbol": "SPY",
-        "tvSymbol": "AMEX:SPY",
-        "thetaEdge": 0.17
-      },
-      {
         "symbol": "NVDA",
         "tvSymbol": "NASDAQ:NVDA",
         "thetaEdge": 0.16
@@ -8510,7 +8496,7 @@
         "thetaEdge": 0.09
       }
     ],
-    "privacyNote": "Live stock chart uses TradingView public chart embeds for the locked Theta stock universe only. Private account balances, orders, API keys, and secrets are never sent to the browser."
+    "privacyNote": "Live stock chart uses TradingView public chart embeds for the aggressive Theta stock focus only. Private account balances, orders, API keys, and secrets are never sent to the browser."
   },
   "dataQuality": {
     "missingGaps": [

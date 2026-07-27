@@ -8,11 +8,11 @@ const publicDataDir = path.join(appRoot, "public", "data");
 const outFile = path.join(publicDataDir, "dashboard.json");
 
 const lockedUniverse = ["TSLA", "QQQ", "SPY", "NVDA", "AMD"];
+const aggressiveFocusUniverse = ["TSLA", "QQQ", "NVDA", "AMD"];
 const retiredSymbols = new Set(["DIA", "GOOGL"]);
 const liveStockUniverse = [
   { symbol: "TSLA", tvSymbol: "NASDAQ:TSLA", thetaEdge: 0.07 },
   { symbol: "QQQ", tvSymbol: "NASDAQ:QQQ", thetaEdge: 0.35 },
-  { symbol: "SPY", tvSymbol: "AMEX:SPY", thetaEdge: 0.17 },
   { symbol: "NVDA", tvSymbol: "NASDAQ:NVDA", thetaEdge: 0.16 },
   { symbol: "AMD", tvSymbol: "NASDAQ:AMD", thetaEdge: 0.09 }
 ];
@@ -510,6 +510,7 @@ const dashboard = {
   stance: {
     name: "Trading System Theta + Jewel",
     universe: lockedUniverse,
+    aggressiveFocus: aggressiveFocusUniverse,
     boundary: "Paper/research only. No real-money orders without exact explicit approval.",
     rules: profile.operating_rules || []
   },
@@ -556,7 +557,7 @@ const dashboard = {
     provider: "TradingView",
     defaultInterval: "5",
     instruments: liveStockUniverse,
-    privacyNote: "Live stock chart uses TradingView public chart embeds for the locked Theta stock universe only. Private account balances, orders, API keys, and secrets are never sent to the browser."
+    privacyNote: "Live stock chart uses TradingView public chart embeds for the aggressive Theta stock focus only. Private account balances, orders, API keys, and secrets are never sent to the browser."
   },
   dataQuality: {
     missingGaps: [

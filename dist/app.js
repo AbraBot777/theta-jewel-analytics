@@ -272,7 +272,7 @@ function renderDashboard(data) {
   const backtest = data.kpis.backtest;
   app.innerHTML = `
     <section class="hero">
-      <div><p class="eyebrow">Trading System Theta</p><h1>Jewel Analytics Command</h1><p class="hero-copy">Paper, demo, and historical learning dashboard for the locked Theta stock universe and TradingView live price-action watch.</p></div>
+      <div><p class="eyebrow">Trading System Theta</p><h1>Jewel Analytics Command</h1><p class="hero-copy">Aggressive paper focus for TSLA, QQQ, NVDA, and AMD, backed by Jewel learning, staged swing triggers, and TradingView live price-action watch.</p></div>
       <div class="hero-status"><span>Updated ${esc(data.generatedAtDisplay)}</span><span>${esc(data.updateCadence)}</span></div>
     </section>
     <section class="kpi-grid">
