@@ -131,18 +131,90 @@ function displayDate(iso) {
 }
 
 function splitMonitorKey(key) {
-  const parts = key.split(":");
-  return {
-    source: parts[0] || "",
-    rowIndex: parts[1] || "",
-    openedAt: parts[2] || "",
-    symbol: parts[3] || "",
-    timeframe: parts[4] || "",
-    direction: parts[5] || "",
-    entry: toNumber(parts[6], null),
-    stop: toNumber(parts[7], null),
-    target: toNumber(parts[8], null)
-  };
+  try {
+    const [prefix, symbol, timeframe, direction, entry, stop, target] = splitFromRight(key, ":", 6);
+    const [source, rowIndex, openedAt] = splitFromLeft(prefix, ":", 2);
+    return {
+      source: source || "",
+      rowIndex: rowIndex || "",
+      openedAt: openedAt || "",
+      symbol: symbol || "",
+      timeframe: timeframe || "",
+      direction: direction || "",
+      entry: toNumber(entry, null),
+      stop: toNumber(stop, null),
+      target: toNumber(target, null)
+    };
+  } catch {
+    const parts = key.split(":");
+    return {
+      source: parts[0] || "",
+      rowIndex: parts[1] || "",
+      openedAt: parts[2] || "",
+      symbol: parts[3] || "",
+      timeframe: parts[4] || "",
+      direction: parts[5] || "",
+      entry: toNumber(parts[6], null),
+      stop: toNumber(parts[7], null),
+      target: toNumber(parts[8], null)
+    };
+  }
+}
+
+function splitFromRight(value, delimiter, count) {
+  const parts = String(value).split(delimiter);
+  if (parts.length < count + 1) throw new Error("not enough parts");
+  const right = parts.slice(-count);
+  return [parts.slice(0, -count).join(delimiter), ...right];
+}
+
+function splitFromLeft(value, delimiter, count) {
+  const parts = String(value).split(delimiter);
+  if (parts.length < count + 1) throw new Error("not enough parts");
+  return [...parts.slice(0, count), parts.slice(count).join(delimiter)];
+}
+
+function closeTimestampFromDetails(details, fallbackIso) {
+  const exitIso = isoFromUnix(details?.exit_ts);
+  return exitIso || fallbackIso || null;
+}
+
+function parseJsonMaybe(value) {
+  try {
+    return JSON.parse(value);
+  } catch {
+    return null;
+  }
+}
+
+function logicalCloseKey({ source, symbol, timeframe, direction, result, closedAt }) {
+  return [source, symbol, timeframe, direction, result, closedAt].join("|");
+}
+
+function latestSetupKey(row) {
+  return `${row.source}:${row.symbol}:${row.timeframe}`;
+}
+
+function monitorLogicalKey(parsed, result, closedAt) {
+  return logicalCloseKey({
+    source: parsed.source,
+    symbol: parsed.symbol,
+    timeframe: parsed.timeframe,
+    direction: parsed.direction,
+    result,
+    closedAt
+  });
+}
+
+function ledgerLogicalKey(row, closedAt) {
+  return logicalCloseKey({
+    source: row.source,
+    symbol: row.symbol,
+    timeframe: row.timeframe,
+    direction: row.direction,
+    result: row.outcome,
+    closedAt
+  });
 }
 
 function mentionsRetiredSymbol(value) {
@@ -165,13 +237,17 @@ function tradeR(result, entry, stop, target) {
 function buildClosedTrades(monitorState, ledgerRows) {
   const closed = [];
   const processed = monitorState?.processed || {};
+  const seenLogical = new Set();
 
   for (const [key, value] of Object.entries(processed)) {
     if (!["WIN", "LOSS"].includes(value?.result)) continue;
     const parsed = splitMonitorKey(key);
     if (!lockedUniverse.includes(parsed.symbol)) continue;
 
-    const closedAt = isoFromUnix(value.details?.exit_ts) || value.checked_at || parsed.openedAt;
+    const closedAt = closeTimestampFromDetails(value.details, value.checked_at || parsed.openedAt);
+    const logicalKey = monitorLogicalKey(parsed, value.result, closedAt);
+    if (seenLogical.has(logicalKey)) continue;
+    seenLogical.add(logicalKey);
     const rMultiple = tradeR(value.result, parsed.entry, parsed.stop, parsed.target);
     closed.push({
       id: key,
@@ -199,6 +275,11 @@ function buildClosedTrades(monitorState, ledgerRows) {
   for (const row of ledgerRows) {
     if (!["WIN", "LOSS"].includes(row.outcome)) continue;
     if (!lockedUniverse.includes(row.symbol)) continue;
+    const details = parseJsonMaybe(row.notes);
+    const closedAt = closeTimestampFromDetails(details, row.timestamp);
+    const logicalKey = ledgerLogicalKey(row, closedAt);
+    if (seenLogical.has(logicalKey)) continue;
+    seenLogical.add(logicalKey);
     const id = `${row.source}:${row.timestamp}:${row.symbol}:${row.timeframe}:${row.direction}:${row.entry}:${row.stop}:${row.target}`;
     if (seen.has(id)) continue;
     closed.push({
@@ -210,8 +291,8 @@ function buildClosedTrades(monitorState, ledgerRows) {
       direction: row.direction,
       openedAt: row.timestamp,
       openedAtDisplay: displayTime(row.timestamp),
-      closedAt: row.timestamp,
-      closedAtDisplay: displayTime(row.timestamp),
+      closedAt,
+      closedAtDisplay: displayTime(closedAt),
       result: row.outcome,
       resultLabel: row.outcome === "WIN" ? "Won" : "Lost",
       rMultiple: toNumber(row.r_multiple, row.outcome === "WIN" ? 1 : -1),
@@ -237,7 +318,7 @@ function buildOpenTrades(ledgerRows) {
   const seen = new Set();
   const open = [];
   for (const row of rows) {
-    const key = `${row.symbol}:${row.timeframe}:${row.direction}:${row.entry}:${row.stop}:${row.target}`;
+    const key = latestSetupKey(row);
     if (seen.has(key)) continue;
     seen.add(key);
     open.push({
