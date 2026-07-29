@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-28T22:00:00.426Z",
-  "generatedAtDisplay": "29 Jul 2026, 00:00",
+  "generatedAt": "2026-07-29T06:00:01.364Z",
+  "generatedAtDisplay": "29 Jul 2026, 08:00",
   "timezone": "Africa/Johannesburg",
   "updateCadence": "Every 8 hours from 08:00 SAST: 08:00, 16:00, 00:00.",
   "sourceFiles": [
@@ -60,8 +60,8 @@
     },
     "openTrades": 10,
     "ledgerRows": 2702,
-    "lastMonitorRun": "2026-07-28T20:51:43.756349+00:00",
-    "lastMonitorRunDisplay": "28 Jul 2026, 22:51"
+    "lastMonitorRun": "2026-07-29T03:00:36.269800+00:00",
+    "lastMonitorRunDisplay": "29 Jul 2026, 05:00"
   },
   "charts": {
     "dailyOutcomes": [
@@ -2503,11 +2503,24 @@
         "lunarTagged": 0,
         "lunarAvgR": 0,
         "learningScore": 43
+      },
+      {
+        "date": "2026-07-29",
+        "trades": 531,
+        "wins": 307,
+        "losses": 221,
+        "timed": 3,
+        "winRate": 0.578,
+        "totalR": 86.2,
+        "avgR": 0.16,
+        "lunarTagged": 0,
+        "lunarAvgR": 0,
+        "learningScore": 43
       }
     ],
     "learningTrendSummary": {
-      "points": 40,
-      "latestDate": "2026-07-28",
+      "points": 41,
+      "latestDate": "2026-07-29",
       "latestScore": 43,
       "previousScore": 43,
       "scoreChange": 0,
@@ -6762,12 +6775,6 @@
   ],
   "learningNotes": {
     "recent": [
-      "AMD|1H|Short|cardinal|360|dist-0.25|with-trend|non-lunar: 0W/3L, -3.00R.",
-      "NVDA|1H|Long|ordinal|315|dist-0.50|with-trend|non-lunar: 0W/3L, -3.00R.",
-      "AMD|1H|Short|ordinal|315|dist-0.25|with-trend|non-lunar: 0W/3L, -3.00R.",
-      "TSLA|1H|Long|ordinal|225|dist-0.25|with-trend|non-lunar: 0W/3L, -3.00R.",
-      "SPY|1H|Short|ordinal|225|dist-0.25|with-trend|non-lunar: 0W/2L, -2.00R.",
-      "Raw: 147 trades, 55.8% wins, 17.00R total, 0.116R avg.",
       "Memory: 134 trades, 13 skips, 56.0% wins, 16.00R total, 0.119R avg.",
       "Promotion status: not promoted; keep as research/advisory memory.",
       "TSLA|1H|Short|ordinal|315|dist-0.25|with-trend|non-lunar: 1W/4L, -3.00R.",
@@ -6775,7 +6782,13 @@
       "NVDA|1H|Long|ordinal|315|dist-0.50|with-trend|non-lunar: 0W/3L, -3.00R.",
       "AMD|1H|Short|ordinal|315|dist-0.25|with-trend|non-lunar: 0W/3L, -3.00R.",
       "TSLA|1H|Long|ordinal|225|dist-0.25|with-trend|non-lunar: 0W/3L, -3.00R.",
-      "SPY|1H|Short|ordinal|225|dist-0.25|with-trend|non-lunar: 0W/2L, -2.00R."
+      "SPY|1H|Short|ordinal|225|dist-0.25|with-trend|non-lunar: 0W/2L, -2.00R.",
+      "Clean 2026-07-28 day-trade monitor finished the main window at 4W/4L, roughly flat net after being about +3R earlier.",
+      "What went wrong: the loop kept staging fresh shorts after the day was already up. Late losses clustered in continuation shorts on TSLA, AMD, and QQQ, with TSLA net negative and AMD/QQQ giving back earlier wins.",
+      "Promotion status: promoted as a risk-control lesson, not an entry-edge lesson.",
+      "Implemented rule: once same-day paper day trades reach at least 4 wins and +3R, pause fresh day-trade staging for the rest of that SAST day while still monitoring open staged rows.",
+      "Implemented rule: aggressive widened-boundary day-trade entries are reserved for preferred symbols only; allowed symbols may still stage only under the normal tighter boundary.",
+      "Operating lesson: after a strong early paper session, protect the day. The learning architecture should improve tomorrow more by reducing churn and giveback than by chasing extra late-session trades."
     ],
     "cycleRules": [
       "Highest focus requires preferred/allowed/lunar-tighten training, trend agreement, SO9 distance <= 0.75 ATR, and compression near a boundary.",
@@ -6844,8 +6857,8 @@
   },
   "learningArchitecture": {
     "status": "promoted",
-    "promotedAt": "2026-07-28T18:00:33.278Z",
-    "sourceReport": "reports/theta-history-backtest-2026-07-28.md",
+    "promotedAt": "2026-07-29T03:00:30.653Z",
+    "sourceReport": "reports/theta-history-backtest-2026-07-29.md",
     "sample": "730d 1h Yahoo OHLC THETA Jewel simulation",
     "priorityOrder": [
       "QQQ",
@@ -6926,50 +6939,50 @@
   },
   "activeWatchlist": [
     {
-      "symbol": "AMD",
-      "grade": "allowed",
-      "pattern": "boundary-watch",
-      "action": "observe",
-      "close": 458.73,
-      "trend": "daily-up/intraday-down",
-      "so9": "247.5 jewel-22.5 below 456.8906",
-      "distanceAtr": 0.59,
-      "pivotCycle": 4,
-      "barsSincePivot": 5,
-      "compression": 17.1,
-      "lunar": "apogee 73h",
-      "avgR": 0.09,
-      "hit15R": 0.16
-    },
-    {
       "symbol": "QQQ",
       "grade": "preferred",
       "pattern": "boundary-watch",
       "action": "observe",
-      "close": 677.08,
+      "close": 675.49,
       "trend": "daily-up/intraday-down",
-      "so9": "360 cardinal below 676.0000",
-      "distanceAtr": 0.62,
-      "pivotCycle": 3.8,
-      "barsSincePivot": 5,
-      "compression": 8.2,
-      "lunar": "apogee 73h",
+      "so9": "360 cardinal above 676.0000",
+      "distanceAtr": 0.41,
+      "pivotCycle": 3.9,
+      "barsSincePivot": 2,
+      "compression": 4.8,
+      "lunar": "apogee 75h",
       "avgR": 0.34,
       "hit15R": 0.17
+    },
+    {
+      "symbol": "AMD",
+      "grade": "allowed",
+      "pattern": "boundary-watch",
+      "action": "observe",
+      "close": 454.62,
+      "trend": "daily-up/intraday-down",
+      "so9": "247.5 jewel-22.5 above 456.8906",
+      "distanceAtr": 0.54,
+      "pivotCycle": 4,
+      "barsSincePivot": 2,
+      "compression": 3.7,
+      "lunar": "apogee 75h",
+      "avgR": 0.09,
+      "hit15R": 0.16
     },
     {
       "symbol": "TSLA",
       "grade": "allowed",
       "pattern": "boundary-watch",
       "action": "observe",
-      "close": 307.3,
+      "close": 307.44,
       "trend": "daily-down/intraday-down",
       "so9": "270 cardinal below 306.2500",
-      "distanceAtr": 0.86,
-      "pivotCycle": 3.7,
-      "barsSincePivot": 5,
-      "compression": 8.5,
-      "lunar": "apogee 73h",
+      "distanceAtr": 0.94,
+      "pivotCycle": 3.6,
+      "barsSincePivot": 6,
+      "compression": 5.4,
+      "lunar": "apogee 75h",
       "avgR": 0.1,
       "hit15R": 0.20600000000000002
     },
@@ -6978,14 +6991,14 @@
       "grade": "preferred",
       "pattern": "wait-for-boundary",
       "action": "observe",
-      "close": 197.24,
+      "close": 197.01,
       "trend": "daily-down/intraday-down",
       "so9": "360 cardinal below 196.0000",
-      "distanceAtr": 1.54,
-      "pivotCycle": 4.9,
-      "barsSincePivot": 5,
-      "compression": 7.5,
-      "lunar": "apogee 73h",
+      "distanceAtr": 1.35,
+      "pivotCycle": 4.8,
+      "barsSincePivot": 6,
+      "compression": 3.3,
+      "lunar": "apogee 75h",
       "avgR": 0.16,
       "hit15R": 0.215
     }
