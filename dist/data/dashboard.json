@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-02T22:00:00.515Z",
-  "generatedAtDisplay": "03 Aug 2026, 00:00",
+  "generatedAt": "2026-08-03T06:00:00.419Z",
+  "generatedAtDisplay": "03 Aug 2026, 08:00",
   "timezone": "Africa/Johannesburg",
   "updateCadence": "Every 8 hours from 08:00 SAST: 08:00, 16:00, 00:00.",
   "sourceFiles": [
@@ -60,8 +60,8 @@
     },
     "openTrades": 1,
     "ledgerRows": 152,
-    "lastMonitorRun": "2026-08-02T19:00:00.256604+00:00",
-    "lastMonitorRunDisplay": "02 Aug 2026, 21:00"
+    "lastMonitorRun": "2026-08-03T03:00:02.647224+00:00",
+    "lastMonitorRunDisplay": "03 Aug 2026, 05:00"
   },
   "charts": {
     "dailyOutcomes": [],
