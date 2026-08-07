@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-07T06:00:00.466Z",
-  "generatedAtDisplay": "07 Aug 2026, 08:00",
+  "generatedAt": "2026-08-07T14:00:00.361Z",
+  "generatedAtDisplay": "07 Aug 2026, 16:00",
   "timezone": "Africa/Johannesburg",
   "updateCadence": "Every 8 hours from 08:00 SAST: 08:00, 16:00, 00:00.",
   "sourceFiles": [
@@ -59,9 +59,9 @@
       "hit2R": 0.10922787193973635
     },
     "openTrades": 4,
-    "ledgerRows": 394,
-    "lastMonitorRun": "2026-08-07T03:00:40.717324+00:00",
-    "lastMonitorRunDisplay": "07 Aug 2026, 05:00"
+    "ledgerRows": 431,
+    "lastMonitorRun": "2026-08-07T13:50:00.472287+00:00",
+    "lastMonitorRunDisplay": "07 Aug 2026, 15:50"
   },
   "charts": {
     "dailyOutcomes": [
@@ -2321,20 +2321,39 @@
   ],
   "tradeHistory": [
     {
+      "id": "swing:NVDA:1d",
+      "source": "swing",
+      "mode": "paper-live",
+      "symbol": "NVDA",
+      "timeframe": "1d",
+      "direction": "Long",
+      "openedAt": "2026-08-06T22:00:28.231Z",
+      "openedAtDisplay": "07 Aug 2026, 00:00",
+      "result": "OPEN",
+      "resultLabel": "Open / staged",
+      "rMultiple": 0,
+      "entry": 224.029628,
+      "stop": 211.965874,
+      "target": 236.093381,
+      "trainingGrade": "preferred",
+      "setupFamily": "NVDA|1d|Long|ordinal|315|dist-0.25|long|lunar-unknown",
+      "notes": "Jewel training preferred; avgR 0.16; 3R reach 0.8%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break; first target is 1R, runners are research."
+    },
+    {
       "id": "swing:QQQ:1d",
       "source": "swing",
       "mode": "paper-live",
       "symbol": "QQQ",
       "timeframe": "1d",
       "direction": "Long",
-      "openedAt": "2026-08-05T22:00:27.757Z",
-      "openedAtDisplay": "06 Aug 2026, 00:00",
+      "openedAt": "2026-08-06T22:00:28.230Z",
+      "openedAtDisplay": "07 Aug 2026, 00:00",
       "result": "OPEN",
       "resultLabel": "Open / staged",
       "rMultiple": 0,
-      "entry": 729.434549,
-      "stop": 702.597409,
-      "target": 756.27169,
+      "entry": 729.410121,
+      "stop": 703.305834,
+      "target": 755.514408,
       "trainingGrade": "preferred",
       "setupFamily": "QQQ|1d|Long|ordinal|315|dist-0.25|long|lunar-unknown",
       "notes": "Jewel training preferred; avgR 0.34; 3R reach 0.0%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break; first target is 1R, runners are research."
@@ -2377,25 +2396,6 @@
       "trainingGrade": "preferred",
       "setupFamily": "NVDA|1h|Long|ordinal|315|dist-0.50|long|non-lunar",
       "notes": "Jewel training preferred; win 57.9%; avgR 0.16; 1.5R reach 21.5%. 1H close is above 120 EMA/VWAP, near a Square-of-Nine boundary, and has already closed above the prior 12-bar high."
-    },
-    {
-      "id": "swing:NVDA:1d",
-      "source": "swing",
-      "mode": "paper-live",
-      "symbol": "NVDA",
-      "timeframe": "1d",
-      "direction": "Long",
-      "openedAt": "2026-08-05T13:00:29.848Z",
-      "openedAtDisplay": "05 Aug 2026, 15:00",
-      "result": "OPEN",
-      "resultLabel": "Open / staged",
-      "rMultiple": 0,
-      "entry": 214.810928,
-      "stop": 202.183069,
-      "target": 227.438787,
-      "trainingGrade": "ungraded",
-      "setupFamily": "NVDA|1d|Long|cardinal|270|dist-0.25|long|lunar-unknown",
-      "notes": "Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break; first target is 1R, runners are research."
     },
     {
       "id": "swing:AMD:1d",
@@ -5379,16 +5379,16 @@
   ],
   "learningNotes": {
     "recent": [
-      "No repeated loss family found in this replay.",
-      "Raw: 148 trades, 54.1% wins, 12.00R total, 0.081R avg.",
-      "Memory: 136 trades, 12 skips, 55.9% wins, 16.00R total, 0.118R avg.",
-      "Promotion status: candidate passed comparison; review before active use.",
       "AMD|1H|Short|ordinal|315|dist-0.25|with-trend|non-lunar: 0W/4L, -4.00R.",
       "TSLA|1H|Short|ordinal|315|dist-0.25|with-trend|non-lunar: 1W/4L, -3.00R.",
       "AMD|1H|Short|cardinal|360|dist-0.25|with-trend|non-lunar: 0W/3L, -3.00R.",
       "NVDA|1H|Long|ordinal|315|dist-0.50|with-trend|non-lunar: 0W/3L, -3.00R.",
       "TSLA|1H|Long|ordinal|225|dist-0.25|with-trend|non-lunar: 0W/3L, -3.00R.",
       "SPY|1H|Short|cardinal|360|dist-0.25|with-trend|non-lunar: 1W/3L, -2.00R.",
+      "Raw: 0 trades, 0.0% wins, 0.00R total, 0.000R avg.",
+      "Memory: 0 trades, 0 skips, 0.0% wins, 0.00R total, 0.000R avg.",
+      "Promotion status: not promoted; keep as research/advisory memory.",
+      "No repeated loss family found in this replay.",
       "Raw: 0 trades, 0.0% wins, 0.00R total, 0.000R avg.",
       "Memory: 0 trades, 0 skips, 0.0% wins, 0.00R total, 0.000R avg.",
       "Promotion status: not promoted; keep as research/advisory memory.",
@@ -5404,7 +5404,7 @@
   },
   "learningArchitecture": {
     "status": "promoted",
-    "promotedAt": "2026-08-07T03:00:33.401Z",
+    "promotedAt": "2026-08-07T08:00:48.303Z",
     "sourceReport": "reports/theta-history-backtest-2026-08-07.md",
     "sample": "730d 1h Yahoo OHLC THETA Jewel simulation",
     "priorityOrder": [
@@ -5484,72 +5484,7 @@
       }
     ]
   },
-  "activeWatchlist": [
-    {
-      "symbol": "TSLA",
-      "grade": "allowed",
-      "pattern": "boundary-watch",
-      "action": "observe",
-      "close": 319.53,
-      "trend": "daily-down/intraday-up",
-      "so9": "337.5 jewel-22.5 below 319.5156",
-      "distanceAtr": 0.02,
-      "pivotCycle": 4.2,
-      "barsSincePivot": 7,
-      "compression": 6.1,
-      "lunar": "perigee 87h",
-      "avgR": 0.09,
-      "hit15R": 0.215
-    },
-    {
-      "symbol": "AMD",
-      "grade": "allowed",
-      "pattern": "boundary-watch",
-      "action": "observe",
-      "close": 489.28,
-      "trend": "daily-up/intraday-down",
-      "so9": "202.5 jewel-22.5 above 489.5156",
-      "distanceAtr": 0.09,
-      "pivotCycle": 4.2,
-      "barsSincePivot": 4,
-      "compression": 4.1,
-      "lunar": "perigee 87h",
-      "avgR": 0.09,
-      "hit15R": 0.16
-    },
-    {
-      "symbol": "QQQ",
-      "grade": "preferred",
-      "pattern": "boundary-watch",
-      "action": "observe",
-      "close": 714.65,
-      "trend": "daily-up/intraday-up",
-      "so9": "315 ordinal above 715.5625",
-      "distanceAtr": 0.83,
-      "pivotCycle": 4.2,
-      "barsSincePivot": 4,
-      "compression": 4.7,
-      "lunar": "perigee 87h",
-      "avgR": 0.34,
-      "hit15R": 0.159
-    },
-    {
-      "symbol": "NVDA",
-      "grade": "preferred",
-      "pattern": "wait-for-boundary",
-      "action": "observe",
-      "close": 218.99,
-      "trend": "daily-up/intraday-up",
-      "so9": "315 ordinal below 217.5625",
-      "distanceAtr": 1.95,
-      "pivotCycle": 3.7,
-      "barsSincePivot": 7,
-      "compression": 5,
-      "lunar": "perigee 87h",
-      "avgR": 0.16,
-      "hit15R": 0.215
-    }
-  ],
+  "activeWatchlist": [],
   "stockLive": {
     "provider": "TradingView",
     "defaultInterval": "5",
