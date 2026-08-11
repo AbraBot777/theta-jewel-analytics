@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-11T06:00:00.367Z",
-  "generatedAtDisplay": "11 Aug 2026, 08:00",
+  "generatedAt": "2026-08-11T14:00:00.427Z",
+  "generatedAtDisplay": "11 Aug 2026, 16:00",
   "timezone": "Africa/Johannesburg",
   "updateCadence": "Every 8 hours from 08:00 SAST: 08:00, 16:00, 00:00.",
   "sourceFiles": [
@@ -59,9 +59,9 @@
       "hit2R": 0
     },
     "openTrades": 4,
-    "ledgerRows": 499,
-    "lastMonitorRun": "2026-08-11T03:00:03.163266+00:00",
-    "lastMonitorRunDisplay": "11 Aug 2026, 05:00"
+    "ledgerRows": 507,
+    "lastMonitorRun": "2026-08-11T13:50:06.656079+00:00",
+    "lastMonitorRunDisplay": "11 Aug 2026, 15:50"
   },
   "charts": {
     "dailyOutcomes": [
@@ -2247,14 +2247,27 @@
         "lunarTagged": 0,
         "lunarAvgR": 0,
         "learningScore": 0
+      },
+      {
+        "date": "2026-08-11",
+        "trades": 0,
+        "wins": 0,
+        "losses": 0,
+        "timed": 0,
+        "winRate": 0,
+        "totalR": 0,
+        "avgR": 0,
+        "lunarTagged": 0,
+        "lunarAvgR": 0,
+        "learningScore": 0
       }
     ],
     "learningTrendSummary": {
-      "points": 50,
-      "latestDate": "2026-08-10",
+      "points": 51,
+      "latestDate": "2026-08-11",
       "latestScore": 0,
-      "previousScore": 43,
-      "scoreChange": -43,
+      "previousScore": 0,
+      "scoreChange": 0,
       "latestWinRate": 0,
       "latestAvgR": 0,
       "latestTotalR": 0
@@ -5392,8 +5405,8 @@
   ],
   "learningNotes": {
     "recent": [
-      "TSLA|1H|Long|ordinal|225|dist-0.25|with-trend|non-lunar: 0W/3L, -3.00R.",
-      "SPY|1H|Short|cardinal|360|dist-0.25|with-trend|non-lunar: 1W/3L, -2.00R.",
+      "Promotion status: not promoted; keep as research/advisory memory.",
+      "No repeated loss family found in this replay.",
       "Raw: 0 trades, 0.0% wins, 0.00R total, 0.000R avg.",
       "Memory: 0 trades, 0 skips, 0.0% wins, 0.00R total, 0.000R avg.",
       "Promotion status: not promoted; keep as research/advisory memory.",
@@ -5417,8 +5430,8 @@
   },
   "learningArchitecture": {
     "status": "promoted",
-    "promotedAt": "2026-08-10T13:30:00.189Z",
-    "sourceReport": "reports/theta-history-backtest-2026-08-10.md",
+    "promotedAt": "2026-08-11T13:30:00.206Z",
+    "sourceReport": "reports/theta-history-backtest-2026-08-11.md",
     "sample": "730d 1h Yahoo OHLC THETA Jewel simulation",
     "priorityOrder": [
       "TSLA",
