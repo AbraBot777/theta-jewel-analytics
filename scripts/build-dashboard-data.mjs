@@ -6,6 +6,7 @@ const workspaceRoot = path.resolve(appRoot, "..");
 const thetaRoot = path.join(workspaceRoot, "trading-system-theta-gann");
 const publicDataDir = path.join(appRoot, "public", "data");
 const outFile = path.join(publicDataDir, "dashboard.json");
+const campaignFile = path.join(thetaRoot, "data", "theta-jewel-campaign.json");
 
 const lockedUniverse = ["TSLA", "QQQ", "SPY", "NVDA", "AMD"];
 const aggressiveFocusUniverse = ["TSLA", "QQQ", "NVDA", "AMD"];
@@ -130,6 +131,17 @@ function displayDate(iso) {
   }
 }
 
+function timestampMs(value) {
+  const n = Date.parse(value || "");
+  return Number.isFinite(n) ? n : null;
+}
+
+function isAtOrAfter(value, startMs) {
+  if (!startMs) return true;
+  const n = timestampMs(value);
+  return n !== null && n >= startMs;
+}
+
 function splitMonitorKey(key) {
   try {
     const [prefix, symbol, timeframe, direction, entry, stop, target] = splitFromRight(key, ":", 6);
@@ -215,6 +227,51 @@ function ledgerLogicalKey(row, closedAt) {
     result: row.outcome,
     closedAt
   });
+}
+
+function trainingGradeFromNotes(notes) {
+  const match = String(notes || "").match(/Jewel training ([a-z-]+)/i);
+  return match?.[1] || "";
+}
+
+function normalizePaperLogRows(rows, source) {
+  return rows
+    .filter((row) => lockedUniverse.includes(row.asset))
+    .map((row) => {
+      const status = row.status || "";
+      const result = row.result || "";
+      const outcome = ["WIN", "LOSS"].includes(result)
+        ? result
+        : status.startsWith("STAGE")
+          ? "OPEN"
+          : "SKIP";
+      return {
+        timestamp: row.date_time || "",
+        source,
+        mode: row.mode || "Paper",
+        symbol: row.asset || "",
+        timeframe: row.timeframe || "",
+        direction: row.direction || "",
+        status,
+        outcome,
+        r_multiple: outcome === "LOSS" ? "-1" : outcome === "WIN" ? "1" : "0",
+        entry: row.entry_trigger || "",
+        stop: row.stop || "",
+        target: row.target || "",
+        setup_fingerprint: `${source}|${row.asset}|${row.timeframe}|${row.direction}|${row.entry_trigger}|${row.stop}|${row.target}`,
+        setup_family: row.so9_context || "",
+        training_grade: trainingGradeFromNotes(row.notes),
+        tradingview_confirmation: "not-recorded",
+        notes: row.notes || row.theta_context || ""
+      };
+    });
+}
+
+function parsePaperLogs() {
+  return [
+    ...normalizePaperLogRows(parseCsv(readText(path.join(thetaRoot, "theta-paper-daytrade-log.csv"))), "day"),
+    ...normalizePaperLogRows(parseCsv(readText(path.join(thetaRoot, "theta-paper-swing-log.csv"))), "swing")
+  ];
 }
 
 function mentionsRetiredSymbol(value) {
@@ -563,10 +620,23 @@ function buildLearningArchitecture(profile) {
 }
 
 const profile = readJson(path.join(thetaRoot, "data", "theta-jewel-training-profile.json"), {});
-const monitorState = readJson(path.join(thetaRoot, "data", "theta-win-monitor-state.json"), {});
-const ledgerRows = parseCsv(readText(path.join(thetaRoot, "data", "theta-learning-ledger.csv")));
-const closedTrades = buildClosedTrades(monitorState, ledgerRows);
-const openTrades = buildOpenTrades(ledgerRows);
+const campaign = readJson(campaignFile, {});
+const campaignStartMs = timestampMs(campaign?.started_at);
+const rawMonitorState = readJson(path.join(thetaRoot, "data", "theta-win-monitor-state.json"), {});
+const rawLedgerRows = parseCsv(readText(path.join(thetaRoot, "data", "theta-learning-ledger.csv")));
+const rawPaperRows = parsePaperLogs();
+const monitorState = {
+  ...rawMonitorState,
+  processed: Object.fromEntries(Object.entries(rawMonitorState?.processed || {}).filter(([key, value]) => {
+    const parsed = splitMonitorKey(key);
+    return isAtOrAfter(parsed.openedAt || value?.checked_at, campaignStartMs);
+  }))
+};
+const ledgerRows = rawLedgerRows.filter((row) => isAtOrAfter(row.timestamp, campaignStartMs));
+const paperRows = rawPaperRows.filter((row) => isAtOrAfter(row.timestamp, campaignStartMs));
+const operationalRows = [...ledgerRows, ...paperRows];
+const closedTrades = buildClosedTrades(monitorState, operationalRows);
+const openTrades = buildOpenTrades(operationalRows);
 const summary = summarizeClosed(closedTrades);
 const series = dailySeries(closedTrades);
 const learningTrend = parseBacktestReports();
@@ -578,9 +648,20 @@ const dashboard = {
   generatedAt: new Date().toISOString(),
   generatedAtDisplay: displayTime(new Date().toISOString()),
   timezone: "Africa/Johannesburg",
-  updateCadence: "Every 8 hours from 08:00 SAST: 08:00, 16:00, 00:00.",
+  updateCadence: "Telegram W/L updates at 09:00 and 21:00 SAST. Dashboard refreshes from the fresh campaign state.",
+  campaign: {
+    name: campaign?.name || "Theta Jewel campaign",
+    startedAt: campaign?.started_at || null,
+    startedAtDisplay: displayTime(campaign?.started_at),
+    reason: campaign?.reason || "",
+    mode: campaign?.mode || "paper/demo only",
+    historicalLedgerRowsRetained: rawLedgerRows.length,
+    historicalMonitorRowsRetained: Object.keys(rawMonitorState?.processed || {}).length
+  },
   sourceFiles: [
     "trading-system-theta-gann/data/theta-learning-ledger.csv",
+    "trading-system-theta-gann/theta-paper-daytrade-log.csv",
+    "trading-system-theta-gann/theta-paper-swing-log.csv",
     "trading-system-theta-gann/data/theta-win-monitor-state.json",
     "trading-system-theta-gann/data/theta-jewel-training-profile.json",
     "trading-system-theta-gann/data/theta-learnings.md",
@@ -607,6 +688,7 @@ const dashboard = {
     },
     openTrades: openTrades.length,
     ledgerRows: ledgerRows.length,
+    paperLogRows: paperRows.length,
     lastMonitorRun: monitorState?.last_run || null,
     lastMonitorRunDisplay: displayTime(monitorState?.last_run)
   },
