@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-14T10:32:37.270Z",
-  "generatedAtDisplay": "14 Aug 2026, 12:32",
+  "generatedAt": "2026-08-14T14:05:38.236Z",
+  "generatedAtDisplay": "14 Aug 2026, 16:05",
   "timezone": "Africa/Johannesburg",
   "updateCadence": "Telegram W/L updates at 09:00 and 21:00 SAST. Dashboard refreshes from the fresh campaign state.",
   "campaign": {
@@ -9,7 +9,7 @@
     "startedAtDisplay": "14 Aug 2026, 12:26",
     "reason": "Regardt requested a fresh start for Trading System Theta Jewel while preserving the learning architecture and historical testing corpus.",
     "mode": "paper/demo only",
-    "historicalLedgerRowsRetained": 755,
+    "historicalLedgerRowsRetained": 779,
     "historicalMonitorRowsRetained": 17
   },
   "sourceFiles": [
@@ -69,11 +69,11 @@
       "hit15R": 0.1958568738229755,
       "hit2R": 0.1111111111111111
     },
-    "openTrades": 4,
-    "ledgerRows": 0,
-    "paperLogRows": 8,
-    "lastMonitorRun": "2026-08-14T10:31:38.381663+00:00",
-    "lastMonitorRunDisplay": "14 Aug 2026, 12:31"
+    "openTrades": 5,
+    "ledgerRows": 24,
+    "paperLogRows": 28,
+    "lastMonitorRun": "2026-08-14T14:05:29.275253+00:00",
+    "lastMonitorRunDisplay": "14 Aug 2026, 16:05"
   },
   "charts": {
     "dailyOutcomes": [],
@@ -867,9 +867,28 @@
   ],
   "tradeHistory": [
     {
+      "id": "day:TSLA:1h",
+      "source": "day",
+      "mode": "Paper",
+      "symbol": "TSLA",
+      "timeframe": "1h",
+      "direction": "Long",
+      "openedAt": "2026-08-14T14:05:25.318Z",
+      "openedAtDisplay": "14 Aug 2026, 16:05",
+      "result": "OPEN",
+      "resultLabel": "Open / staged",
+      "rMultiple": 0,
+      "entry": 350.484985,
+      "stop": 345.427606,
+      "target": 355.542365,
+      "trainingGrade": "allowed",
+      "setupFamily": "315 degree ordinal above boundary 351.562500 (scale 1); Jewel expanded Square-of-Nine angles: 22.5-degree divisions through 360; distance 0.32 ATR",
+      "notes": "Jewel training allowed; win 54.3%; avgR 0.09; 1.5R reach 20.9%. 1H close is above 120 EMA/VWAP, near a Square-of-Nine boundary, and has already closed above the prior 12-bar high."
+    },
+    {
       "id": "swing:QQQ:1d",
       "source": "swing",
-      "mode": "Paper",
+      "mode": "paper-live",
       "symbol": "QQQ",
       "timeframe": "1d",
       "direction": "Long",
@@ -882,13 +901,13 @@
       "stop": 720.978395,
       "target": 747.836933,
       "trainingGrade": "preferred",
-      "setupFamily": "360 degree cardinal below boundary 729.000000 (scale 1); Jewel expanded Square-of-Nine angles: 22.5-degree divisions through 360; distance 0.34 ATR",
+      "setupFamily": "QQQ|1d|Long|cardinal|360|dist-0.50|long|lunar-unknown",
       "notes": "Jewel training preferred; avgR 0.34; 3R reach 0.0%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break; first target is 1R, runners are research."
     },
     {
       "id": "swing:NVDA:1d",
       "source": "swing",
-      "mode": "Paper",
+      "mode": "paper-live",
       "symbol": "NVDA",
       "timeframe": "1d",
       "direction": "Long",
@@ -901,13 +920,13 @@
       "stop": 217.459071,
       "target": 237.674778,
       "trainingGrade": "allowed",
-      "setupFamily": "360 degree cardinal below boundary 225.000000 (scale 1); Jewel expanded Square-of-Nine angles: 22.5-degree divisions through 360; distance 0.04 ATR",
+      "setupFamily": "NVDA|1d|Long|cardinal|360|dist-0.25|long|lunar-unknown",
       "notes": "Jewel training allowed; avgR 0.14; 3R reach 1.7%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break; first target is 1R, runners are research."
     },
     {
       "id": "swing:AMD:1d",
       "source": "swing",
-      "mode": "Paper",
+      "mode": "paper-live",
       "symbol": "AMD",
       "timeframe": "1d",
       "direction": "Long",
@@ -920,13 +939,13 @@
       "stop": 498.698156,
       "target": 563.729567,
       "trainingGrade": "allowed",
-      "setupFamily": "360 degree cardinal above boundary 484.000000 (scale 1); Jewel expanded Square-of-Nine angles: 22.5-degree divisions through 360; distance 0.05 ATR",
+      "setupFamily": "AMD|1d|Long|cardinal|360|dist-0.25|long|lunar-unknown",
       "notes": "Jewel training allowed; avgR 0.08; 3R reach 4.7%. Daily close is above 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day high break; first target is 1R, runners are research."
     },
     {
       "id": "swing:TSLA:1d",
       "source": "swing",
-      "mode": "Paper",
+      "mode": "paper-live",
       "symbol": "TSLA",
       "timeframe": "1d",
       "direction": "Short",
@@ -939,7 +958,7 @@
       "stop": 316.383011,
       "target": 286.562991,
       "trainingGrade": "allowed",
-      "setupFamily": "270 degree cardinal above boundary 342.250000 (scale 1); Jewel expanded Square-of-Nine angles: 22.5-degree divisions through 360; distance 0.23 ATR",
+      "setupFamily": "TSLA|1d|Short|cardinal|270|dist-0.25|short|lunar-unknown",
       "notes": "Jewel training allowed; avgR 0.09; 3R reach 3.9%. Daily close is below 120 EMA and near a Jewel Square-of-Nine boundary; stage only on a 10-day low break; first target is 1R, runners are research."
     }
   ],
